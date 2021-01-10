@@ -1,15 +1,13 @@
 import React from "react"
-// import { Link } from "gatsby"
 
-import Layout from "../components/layout"
-// import Image from "../components/image"
+import PageLayout from "../templates/pages"
 import SEO from "../components/seo"
 
 const IndexPage = () => (
-  <Layout>
+  <PageLayout>
     <SEO title="Home" />
     <h1>Edicson Abel</h1>
-  </Layout>
+  </PageLayout>
 )
 
 export default IndexPage

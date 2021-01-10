@@ -1,1 +1,18 @@
-@import '../../node_modules/bootstrap/scss/bootstrap'
+/*******   UTILITIES   *******/
+@import './normalize';
+@import '../../node_modules/bootstrap/scss/bootstrap-grid';
+
+/*******   MY CODE   *******/
+.yt-video{
+  height: 0px;
+  width: 100%;
+  padding-top: 56.25%;
+  position: relative;
+}
+.yt-video iframe{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+}
