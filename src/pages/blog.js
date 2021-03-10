@@ -34,26 +34,25 @@ query{
 `
 const BlogPage = () => (
   <PageLayout>
-    <SEO title="Blog" />
+    <SEO title="Blog" type="page" />
     <h1>Blog</h1>
     <StaticQuery
       query={blogQuery}
       render={data => (
         <Fragment>
-          { console.log(data) }
-          {data.allMdx.edges.map( ({node}) => (
+          {/* {console.log(data)} */}
+          {data.allMdx.edges.map(({ node }) => (
             <div key={node.id}>
-              <Link className='mr-2' to={`/${node.slug}`}>
+              <Link className="mr-2" to={`/${node.slug}`}>
                 <Img fluid={node.frontmatter.image.childImageSharp.fluid} />
                 {node.frontmatter.title}
               </Link>
-              { node.frontmatter.tags.map(tag => (
-                <Fragment >
+              {node.frontmatter.tags.map(tag => (
+                <Fragment>
                   {" | "}
-                  <Link to={`/tags/${slugify(tag)}`} >{tag}</Link>
+                  <Link to={`/tags/${slugify(tag)}`}>{tag}</Link>
                 </Fragment>
-                )
-              )}
+              ))}
             </div>
           ))}
         </Fragment>

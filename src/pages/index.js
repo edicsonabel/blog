@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 
 const IndexPage = () => (
   <PageLayout>
-    <SEO title="Home" />
+    <SEO title="Home" type="page" />
     <h1>Edicson Abel</h1>
   </PageLayout>
 )

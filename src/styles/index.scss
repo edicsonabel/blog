@@ -3,6 +3,97 @@
 @import '../../node_modules/bootstrap/scss/bootstrap-grid';
 
 /*******   MY CODE   *******/
+@import './variables';
+// TAGS
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style-type: none;
+}
+
+// HEADER
+.header-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar {
+  z-index: 20;
+  position: fixed;
+  bottom: 8px;
+  right: 0;
+  left: 0;
+}
+.navbar-list {
+  flex-direction: row;
+  width: calc(100vw - 16px);
+  height: 52px;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: var(--dark);
+}
+.flex-center {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.navbar-item {
+  height: 100%;
+  flex-grow: 1;
+  flex-basis: 0;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.navbar-item-active {
+  flex-grow: 2.5;
+}
+.navbar-link {
+  display: flex;
+  height: 100%;
+}
+.navbar-icon {
+  max-height: 20px;
+  filter: var(--secondary-filter);
+}
+.navbar-text {
+  font-size: 16px;
+  display: none;
+  color: var(--secondary);
+}
+.navbar-item-active .navbar-text {
+  display: initial;
+  margin-left: 0.7em;
+  color: var(--primary);
+}
+.navbar-item-active .navbar-icon {
+  filter: var(--primary-filter);
+}
+.item-portfolio {
+  order: 1;
+}
+.item-home {
+  order: 2;
+}
+.item-blog,
+.item-search {
+  order: 3;
+}
+body{
+  color: var(--text-light);
+  background-color: var(--mode-dark);
+}
 .yt-video{
   height: 0px;
   width: 100%;

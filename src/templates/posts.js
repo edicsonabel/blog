@@ -12,6 +12,7 @@ import SEO from "../components/seo"
 import Header from "../components/header"
 import Footer from "../components/footer"
 import { useSiteMetadata } from "../utils/utility"
+import Img from "gatsby-image"
 
 export const postInfo = () => graphql`
 query BlogPostQuery($id: String!) {
@@ -39,21 +40,22 @@ query BlogPostQuery($id: String!) {
 
 export const PostLayout = ({ data }) => {
   const site = useSiteMetadata();
-  const { title } = data.mdx.frontmatter
+  const { title, image } = data.mdx.frontmatter
   const { body } = data.mdx
 
   return (
     <Fragment>
-    <SEO title={ title } />
-    <Header siteTitle={ site.title } />
-    <main className="container col-12 col-md-8 col-lg-7">
-    <MDXProvider components={Link}>
-    <MDXRenderer>{body}</MDXRenderer>
-    </MDXProvider>
-    </main>
-    <Footer />
+      <SEO title={title} />
+      <Header siteTitle={site.title} />
+      <main>
+        <Img fluid={image.childImageSharp.fluid} />
+        <MDXProvider components={Link}>
+          <MDXRenderer>{body}</MDXRenderer>
+        </MDXProvider>
+      </main>
+      <Footer />
     </Fragment>
-    )
+  )
 }
 
 export default PostLayout

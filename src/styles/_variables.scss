@@ -1,0 +1,17 @@
+// VARIABLES
+:root{
+  // Colors
+  --primary:#4ECDC4;
+  --primary-filter:invert(80%) sepia(11%) saturate(1975%) hue-rotate(123deg)
+    brightness(89%) contrast(89%);;
+  --secondary:#EEF36A;
+  --secondary-filter:invert(99%) sepia(45%) saturate(4499%) hue-rotate(316deg)
+    brightness(128%) contrast(90%);
+  --light:#F5F3F5;
+  --dark:#242325;
+  --blue-dark:#001021;
+  --mode-dark:#3C4043;
+  --mode-light:var(--light);
+  --text-dark:var(--dark);
+  --text-light:var(--light);
+}

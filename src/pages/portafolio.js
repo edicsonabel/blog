@@ -3,11 +3,11 @@ import React from "react"
 import PageLayout from "../templates/pages"
 import SEO from "../components/seo"
 
-const ProjectsPage = () => (
+const PortfolioPage = () => (
   <PageLayout>
-    <SEO title="Projects" />
-    <h1>Projects</h1>
+    <SEO title="Portafolio" type="page" />
+    <h1>Portafolio</h1>
   </PageLayout>
 )
 
-export default ProjectsPage
+export default PortfolioPage
