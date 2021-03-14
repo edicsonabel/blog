@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import { graphql, StaticQuery } from "gatsby"
 import PageLayout from "../templates/pages"
 import SEO from "../components/seo"
+import Navbar from "../components/navbar"
 import Img from "gatsby-image"
 import { slugify } from "../utils/utility"
 
@@ -35,12 +36,12 @@ query{
 const BlogPage = () => (
   <PageLayout>
     <SEO title="Blog" type="page" />
+    <Navbar active="blog" />
     <h1>Blog</h1>
     <StaticQuery
       query={blogQuery}
       render={data => (
         <Fragment>
-          {/* {console.log(data)} */}
           {data.allMdx.edges.map(({ node }) => (
             <div key={node.id}>
               <Link className="mr-2" to={`/${node.slug}`}>

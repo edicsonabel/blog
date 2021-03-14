@@ -1,0 +1,20 @@
+// TAGS
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style-type: none;
+}
+body{
+  @include body-1;
+  color: var(--text-light);
+  background-color: var(--mode-dark);
+}
