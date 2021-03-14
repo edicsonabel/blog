@@ -8,9 +8,9 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import '../styles/index.scss'
 
 /*    COMPONTENTS AND UTILS    */
-import SEO from "../components/seo"
-import Navbar from "../components/navbar"
-import Footer from "../components/footer"
+import SEO from "../components/SEO"
+import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
 import Img from "gatsby-image"
 
 export const postInfo = () => graphql`

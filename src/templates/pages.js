@@ -6,7 +6,7 @@ import PropTypes from "prop-types"
 import "../styles/index.scss"
 
 /*    COMPONTENTS AND UTILS    */
-import Footer from "../components/footer"
+import Footer from "../components/Footer"
 
 const PageLayout = ({ children }) => {
   return (

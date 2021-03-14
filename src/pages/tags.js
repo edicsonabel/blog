@@ -1,8 +1,8 @@
 import React from "react"
 
 import PageLayout from "../templates/pages"
-import SEO from "../components/seo"
-import Navbar from "../components/navbar"
+import SEO from "../components/SEO"
+import Navbar from "../components/Navbar"
 
 const TagsPage = () => (
   <PageLayout>
