@@ -3,7 +3,7 @@ import React, { Fragment } from "react"
 import PropTypes from "prop-types"
 
 /*    STYLES    */
-import "../styles/index.scss"
+import "../styles/index.sass"
 
 /*    COMPONTENTS AND UTILS    */
 import Footer from "../components/Footer"
