@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: "/",
+  pathPrefix: `/`,
   siteMetadata: {
     title: `Edicson Abel`,
     description: `Soy un desarollador 💻 intentando ayudarte a mejorar tus habilidades a través de artículos, cursos, vídeos y tutoriales. Así que comencemos 😎.`,

@@ -1,29 +1,32 @@
 import React, { Fragment } from "react"
 import { Link } from "gatsby"
 import { graphql, StaticQuery } from "gatsby"
+import Img from "gatsby-image"
+
+/*    COMPONENTS & UTILS    */
 import PageLayout from "../templates/pages"
 import SEO from "../components/SEO"
 import Navbar from "../components/Navbar"
-import Img from "gatsby-image"
-import { slugify } from "../utils/utility"
+import Tag from "../components/Tag"
 
 const blogQuery = graphql`
-query{
-  allMdx(sort: {fields: [frontmatter___date], order: DESC}) {
-    edges {
-      node {
-        id
-        slug
-        excerpt
-        frontmatter {
-          title
-          author
-          date
-          tags
-          image {
-            childImageSharp {
-              fluid(maxWidth: 600) {
-                ...GatsbyImageSharpFluid
+  query {
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+      edges {
+        node {
+          id
+          slug
+          excerpt
+          frontmatter {
+            title
+            author
+            date
+            tags
+            image {
+              childImageSharp {
+                fluid(maxWidth: 600) {
+                  ...GatsbyImageSharpFluid
+                }
               }
             }
           }
@@ -31,7 +34,6 @@ query{
       }
     }
   }
-}
 `
 const BlogPage = () => (
   <PageLayout>
@@ -48,12 +50,11 @@ const BlogPage = () => (
                 <Img fluid={node.frontmatter.image.childImageSharp.fluid} />
                 {node.frontmatter.title}
               </Link>
-              {node.frontmatter.tags.map(tag => (
-                <Fragment>
-                  {" | "}
-                  <Link to={`/tags/${slugify(tag)}`}>{tag}</Link>
-                </Fragment>
-              ))}
+              <div className="tag-box">
+                {node.frontmatter.tags.map(tag => (
+                  <Tag key={tag} name={tag} />
+                ))}
+              </div>
             </div>
           ))}
         </Fragment>

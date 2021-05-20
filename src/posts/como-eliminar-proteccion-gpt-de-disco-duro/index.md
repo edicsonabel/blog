@@ -5,7 +5,8 @@ image: 'como-eliminar-proteccion-gpt-de-disco-duro.webp'
 author: 'Edicson Abel'
 excerpt: 'No se puede instalar Windows en este disco. el disco seleccionado tiene el estilo de partición GPT. Debemos solucionarlo como se muestra aquí. Los GPT son tablas de partición GUID que tienen algunos discos duros, y esto nos bloquean la instalación de sistemas operativos (OS) en dicho disco.'
 tags:
-- YouTube
+- youtube
+- video
 ---
 Normalmente te das cuenta que tienes la protección GPT en tu disco cuando aparece el mensaje:
 "No se puede instalar Windows en este disco. el disco seleccionado tiene el estilo de partición GPT" y debemos solucionarlo como se muestra en el vídeo.

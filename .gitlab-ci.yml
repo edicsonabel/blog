@@ -1,0 +1,46 @@
+image: node:lts
+
+stages:
+  - Install node packages
+  - Clean Gatsby cache
+  - Publish Gastby
+
+# These folders are cached between builds
+# http://docs.gitlab.com/ce/ci/yaml/README.html#cache
+cache:
+  paths:
+    # Default cache directory from https://classic.yarnpkg.com/en/docs/install-ci/#gitlab.
+    - node_modules/
+    # Enables git-lab CI caching. Both .cache and public must be cached, otherwise builds will fail.
+    - .cache/
+    - public/
+
+yarn:install:
+  stage: Install node packages
+  script:
+    # Install via yarn with frozen-lockfile to allow reproducible dependencies and check-files option to check if the node_modules cache is valid.
+    - yarn install --frozen-lockfile --check-files --non-interactive
+  only:
+    - production
+
+gatsby:clean:
+  stage: Clean Gatsby cache
+  needs:
+    - yarn:install
+  script:
+    - ./node_modules/.bin/gatsby clean
+  only:
+    - production
+
+pages:
+  stage: Publish Gastby
+  needs: 
+    - yarn:install
+    - gatsby:clean
+  script:
+    - ./node_modules/.bin/gatsby build --prefix-paths
+  artifacts:
+    paths:
+      - public
+  only:
+    - production
