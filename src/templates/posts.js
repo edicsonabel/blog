@@ -1,17 +1,19 @@
 /*    LIBRARIES    */
-import React, { Fragment } from "react"
-import { graphql, Link } from "gatsby"
-import { MDXProvider } from "@mdx-js/react"
-import { MDXRenderer } from "gatsby-plugin-mdx"
+import React, { Fragment } from "react";
+import { graphql, Link } from "gatsby";
+import { MDXProvider } from "@mdx-js/react";
+import { MDXRenderer } from "gatsby-plugin-mdx";
+import { connect } from "react-redux";
 
 /*    STYLES    */
-import "../styles/index.sass"
+import "../styles/index.sass";
 
 /*    COMPONTENTS AND UTILS    */
-import SEO from "../components/SEO"
-import Navbar from "../components/Navbar"
-import Footer from "../components/Footer"
-import Header from "../components/Header"
+import pageActiveChange from "../redux/actions/pageActiveChange";
+import SEO from "../components/SEO";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 export const postInfo = () => graphql`
   query BlogPostQuery($id: String!, $author: String!) {
@@ -47,17 +49,25 @@ export const postInfo = () => graphql`
       }
     }
   }
-`
+`;
 
-export const PostLayout = ({ data }) => {
-  const { title, image, excerpt, author, tags, date } = data.mdx.frontmatter
-  const { body, mdxExcerpt } = data.mdx
-  const authorImg = data.allImageSharp.nodes[0].fluid
+export const PostLayout = ({ data, pageActiveChange }) => {
+  pageActiveChange();
+  const { title, image, excerpt, author, tags, date } = data.mdx.frontmatter;
+  const { body, mdxExcerpt } = data.mdx;
+  const authorImg = data.allImageSharp.nodes[0].fluid;
   return (
     <Fragment>
       <SEO title={title} description={excerpt ? excerpt : mdxExcerpt} />
       <Navbar />
-      <Header title={title} image={image} tags={tags} author={author} authorImg={authorImg} date={date} />
+      <Header
+        title={title}
+        image={image}
+        tags={tags}
+        author={author}
+        authorImg={authorImg}
+        date={date}
+      />
       <main className="container main-post">
         <MDXProvider components={Link}>
           <MDXRenderer>{body}</MDXRenderer>
@@ -65,7 +75,13 @@ export const PostLayout = ({ data }) => {
       </main>
       <Footer />
     </Fragment>
-  )
-}
+  );
+};
 
-export default PostLayout
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = {
+  pageActiveChange,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostLayout);

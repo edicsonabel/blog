@@ -1,13 +1,15 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
+import { Link } from "gatsby";
+import PropTypes from "prop-types";
+import React from "react";
+import { connect } from "react-redux";
 
-const Navbar = ({ active }) => (
+const Navbar = ({pageActive}) => {
+  return(
   <nav className="navbar">
     <ul className="navbar-list flex-center">
       <li
         className={`item-home navbar-item
-          ${active === "home" ? "navbar-item-active" : ""}
+          ${pageActive === "home" ? "navbar-item-active" : ""}
         `}
       >
         <Link to="/" className="navbar-link flex-center">
@@ -17,7 +19,7 @@ const Navbar = ({ active }) => (
       </li>
       <li
         className={`item-blog navbar-item
-          ${active === "blog" ? "navbar-item-active" : ""}
+          ${pageActive === "blog" ? "navbar-item-active" : ""}
         `}
       >
         <Link to="/blog/" className="navbar-link flex-center">
@@ -27,7 +29,7 @@ const Navbar = ({ active }) => (
       </li>
       <li
         className={`item-portfolio navbar-item
-          ${active === "portafolio" ? "navbar-item-active" : ""}
+          ${pageActive === "portafolio" ? "navbar-item-active" : ""}
         `}
       >
         <Link to="/portafolio/" className="navbar-link flex-center">
@@ -37,7 +39,7 @@ const Navbar = ({ active }) => (
       </li>
       <li
         className={`item-contact navbar-item
-          ${active === "contacto" ? "navbar-item-active" : ""}
+          ${pageActive === "contacto" ? "navbar-item-active" : ""}
         `}
       >
         <Link to="/contacto/" className="navbar-link flex-center">
@@ -53,10 +55,18 @@ const Navbar = ({ active }) => (
       </li>
     </ul>
   </nav>
-);
+)};
 
 Navbar.propTypes = {
-  active: PropTypes.string
-}
+  pageActive: PropTypes.string,
+};
 
-export default Navbar
+Navbar.defaultProps = {
+  pageActive: "",
+};
+
+const mapStateToProps = (state) => ({
+  pageActive: state.pageActive,
+});
+
+export default connect(mapStateToProps)(Navbar);

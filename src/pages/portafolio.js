@@ -1,15 +1,13 @@
-import React from "react"
+import React from "react";
 
-import PageLayout from "../templates/pages"
-import SEO from "../components/SEO"
-import Navbar from "../components/Navbar"
+import PageLayout from "../templates/pages";
+import SEO from "../components/SEO";
 
 const PortfolioPage = () => (
-  <PageLayout>
+  <PageLayout active="portafolio">
     <SEO title="Portafolio" type="page" />
-    <Navbar active="portafolio" />
     <h1>Portafolio</h1>
   </PageLayout>
-)
+);
 
-export default PortfolioPage
+export default PortfolioPage;

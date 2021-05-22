@@ -5,4 +5,7 @@
  */
 
 // You can delete this file if you're not using it
-import './src/styles/icons/style.css'
+import "./src/styles/icons/style.css";
+
+// Redux
+export { default as wrapRootElement } from "./src/redux/";

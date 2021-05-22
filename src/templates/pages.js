@@ -1,24 +1,38 @@
 /*    LIBRARIES    */
-import React, { Fragment } from "react"
-import PropTypes from "prop-types"
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 /*    STYLES    */
-import "../styles/index.sass"
+import "../styles/index.sass";
 
 /*    COMPONTENTS AND UTILS    */
-import Footer from "../components/Footer"
+import pageActiveChange from "../redux/actions/pageActiveChange";
 
-const PageLayout = ({ children }) => {
+const PageLayout = ({ children, active, pageActiveChange }) => {
+  
+  pageActiveChange(active);
+
   return (
     <Fragment>
       <main className="container">{children}</main>
-      <Footer />
     </Fragment>
-  )
-}
+  );
+};
 
 PageLayout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+  active: PropTypes.string,
+};
 
-export default PageLayout
+PageLayout.defaultProps = {
+  active: "",
+};
+
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = {
+  pageActiveChange,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PageLayout);
