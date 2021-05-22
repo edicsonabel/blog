@@ -2,13 +2,6 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 
-// Images
-import imgHome from "../images/home.svg"
-import imgBlog from "../images/pen.svg"
-import imgPortfolio from "../images/portfolio.svg"
-import imgUser from "../images/user.svg"
-import imgSearch from "../images/search.svg"
-
 const Navbar = ({ active }) => (
   <nav className="navbar">
     <ul className="navbar-list flex-center">
@@ -18,7 +11,7 @@ const Navbar = ({ active }) => (
         `}
       >
         <Link to="/" className="navbar-link flex-center">
-          <img className="navbar-icon" src={imgHome} alt="Edicson Abel" />
+          <i className="navbar-icon i-home" />
           <span className="navbar-text">Home</span>
         </Link>
       </li>
@@ -28,7 +21,7 @@ const Navbar = ({ active }) => (
         `}
       >
         <Link to="/blog/" className="navbar-link flex-center">
-          <img className="navbar-icon" src={imgBlog} alt="Blog" />
+          <i className="navbar-icon i-pen" />
           <span className="navbar-text">Blog</span>
         </Link>
       </li>
@@ -38,7 +31,7 @@ const Navbar = ({ active }) => (
         `}
       >
         <Link to="/portafolio/" className="navbar-link flex-center">
-          <img className="navbar-icon" src={imgPortfolio} alt="Portafolio" />
+          <i className="navbar-icon i-portfolio" />
           <span className="navbar-text">Portafolio</span>
         </Link>
       </li>
@@ -48,13 +41,13 @@ const Navbar = ({ active }) => (
         `}
       >
         <Link to="/contacto/" className="navbar-link flex-center">
-          <img className="navbar-icon" src={imgUser} alt="Contacto" />
+          <i className="navbar-icon i-user" />
           <span className="navbar-text">Contacto</span>
         </Link>
       </li>
       <li className="item-search navbar-item">
         <Link to="#" className="navbar-link flex-center">
-          <img className="navbar-icon" src={imgSearch} alt="Search" />
+          <i className="navbar-icon i-search" />
           <span className="navbar-text">Buscar</span>
         </Link>
       </li>

@@ -22,18 +22,16 @@
     border-radius: 20px
     overflow: hidden
     &-active
-      .navbar-text
+      .navbar-text,
+      .navbar-icon
         display: initial
         color: var(--primary)
-      .navbar-icon
-        filter: var(--primary-filter)
   &-link
     display: flex
     height: 100%
     flex-direction: column
   &-icon
-    max-height: 20px
-    filter: var(--secondary-filter)
+    font-size: 20px
   &-text
     @include body-1
     font-size: 10px
