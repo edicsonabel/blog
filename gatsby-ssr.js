@@ -7,4 +7,4 @@
 // You can delete this file if you're not using it
 
 // Redux
-export { default as wrapRootElement } from "./src/redux/";
+export { default as wrapRootElement } from "./src/states/";

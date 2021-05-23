@@ -1,19 +1,18 @@
 /*    LIBRARIES    */
-import React, { Fragment } from "react";
+import React, { Fragment, Component } from "react";
 import { graphql, Link } from "gatsby";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-import { connect } from "react-redux";
 
 /*    STYLES    */
 import "../styles/index.sass";
 
 /*    COMPONTENTS AND UTILS    */
-import pageActiveChange from "../redux/actions/pageActiveChange";
 import SEO from "../components/SEO";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import { DataContext } from "../states/context";
 
 export const postInfo = () => graphql`
   query BlogPostQuery($id: String!, $author: String!) {
@@ -51,37 +50,45 @@ export const postInfo = () => graphql`
   }
 `;
 
-export const PostLayout = ({ data, pageActiveChange }) => {
-  pageActiveChange();
-  const { title, image, excerpt, author, tags, date } = data.mdx.frontmatter;
-  const { body, mdxExcerpt } = data.mdx;
-  const authorImg = data.allImageSharp.nodes[0].fluid;
-  return (
-    <Fragment>
-      <SEO title={title} description={excerpt ? excerpt : mdxExcerpt} />
-      <Navbar />
-      <Header
-        title={title}
-        image={image}
-        tags={tags}
-        author={author}
-        authorImg={authorImg}
-        date={date}
-      />
-      <main className="container main-post">
-        <MDXProvider components={Link}>
-          <MDXRenderer>{body}</MDXRenderer>
-        </MDXProvider>
-      </main>
-      <Footer />
-    </Fragment>
-  );
-};
+export default class PostLayout extends Component {
+  static contextType = DataContext;
 
-const mapStateToProps = (state) => ({});
+  componentDidMount() {
+    const { setPageActive } = this.context;
+    setPageActive("none");
+  }
 
-const mapDispatchToProps = {
-  pageActiveChange,
-};
+  render() {
+    const {
+      title,
+      image,
+      excerpt,
+      author,
+      tags,
+      date,
+    } = this.props.data.mdx.frontmatter;
+    const { body, mdxExcerpt } = this.props.data.mdx;
+    const authorImg = this.props.data.allImageSharp.nodes[0].fluid;
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostLayout);
+    return (
+      <Fragment>
+        <SEO title={title} description={excerpt ? excerpt : mdxExcerpt} />
+        <Navbar />
+        <Header
+          title={title}
+          image={image}
+          tags={tags}
+          author={author}
+          authorImg={authorImg}
+          date={date}
+        />
+        <main className="container main-post">
+          <MDXProvider components={Link}>
+            <MDXRenderer>{body}</MDXRenderer>
+          </MDXProvider>
+        </main>
+        <Footer />
+      </Fragment>
+    );
+  }
+}

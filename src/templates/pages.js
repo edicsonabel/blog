@@ -1,24 +1,29 @@
 /*    LIBRARIES    */
-import React, { Fragment } from "react";
+import React, { Fragment, Component } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 
 /*    STYLES    */
 import "../styles/index.sass";
 
 /*    COMPONTENTS AND UTILS    */
-import pageActiveChange from "../redux/actions/pageActiveChange";
+import { DataContext } from "../states/context";
 
-const PageLayout = ({ children, active, pageActiveChange }) => {
-  
-  pageActiveChange(active);
+export default class PageLayout extends Component {
+  static contextType = DataContext;
 
-  return (
-    <Fragment>
-      <main className="container">{children}</main>
-    </Fragment>
-  );
-};
+  componentDidMount() {
+    const { setPageActive } = this.context;
+    setPageActive(this.props.active);
+  }
+
+  render() {
+    return (
+      <Fragment>
+        <main className="container">{this.props.children}</main>
+      </Fragment>
+    );
+  }
+}
 
 PageLayout.propTypes = {
   children: PropTypes.node.isRequired,
@@ -26,13 +31,5 @@ PageLayout.propTypes = {
 };
 
 PageLayout.defaultProps = {
-  active: "",
+  active: "none",
 };
-
-const mapStateToProps = (state) => ({});
-
-const mapDispatchToProps = {
-  pageActiveChange,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PageLayout);

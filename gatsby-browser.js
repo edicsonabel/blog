@@ -8,4 +8,4 @@
 import "./src/styles/icons/style.css";
 
 // Redux
-export { default as wrapRootElement } from "./src/redux/";
+export { default as wrapRootElement } from "./src/states/";
