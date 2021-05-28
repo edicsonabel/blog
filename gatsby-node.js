@@ -1,4 +1,4 @@
-const path = require("path")
+const path = require('path')
 
 const imgToName = img => img.split('.').slice(0, -1).join('.')
 
@@ -46,7 +46,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const images = result.data.allImageSharp.nodes
   // you'll call `createPage` for each result
   posts.forEach(({ node }, index) => {
-    const authorImg = images.filter(img => imgToName(img.fluid.originalName) === node.frontmatter.author)[0].id
+    const authorImg = images.filter(
+      img => imgToName(img.fluid.originalName) === node.frontmatter.author
+    )[0].id
     createPage({
       // This is the slug you created before
       // (or `node.frontmatter.slug`)

@@ -1,19 +1,19 @@
-import { Link } from "gatsby";
+import { Link } from 'gatsby'
 // import PropTypes from "prop-types";
-import React, { useContext } from "react";
+import React, { useContext } from 'react'
 
 /*    COMPONTENTS AND UTILS    */
-import { DataContext } from "../states/context";
+import { DataContext } from '../states/context'
 
 const Navbar = () => {
-  const { PageActive } = useContext(DataContext);
+  const { PageActive } = useContext(DataContext)
 
   return (
     <nav className="navbar">
       <ul className="navbar-list flex-center">
         <li
           className={`item-home navbar-item
-          ${PageActive === "home" ? "navbar-item-active" : ""}
+          ${PageActive === 'home' ? 'navbar-item-active' : ''}
         `}
         >
           <Link to="/" className="navbar-link flex-center">
@@ -23,7 +23,7 @@ const Navbar = () => {
         </li>
         <li
           className={`item-blog navbar-item
-          ${PageActive === "blog" ? "navbar-item-active" : ""}
+          ${PageActive === 'blog' ? 'navbar-item-active' : ''}
         `}
         >
           <Link to="/blog/" className="navbar-link flex-center">
@@ -33,7 +33,7 @@ const Navbar = () => {
         </li>
         <li
           className={`item-portfolio navbar-item
-          ${PageActive === "portafolio" ? "navbar-item-active" : ""}
+          ${PageActive === 'portafolio' ? 'navbar-item-active' : ''}
         `}
         >
           <Link to="/portafolio/" className="navbar-link flex-center">
@@ -43,7 +43,7 @@ const Navbar = () => {
         </li>
         <li
           className={`item-contact navbar-item
-          ${PageActive === "contacto" ? "navbar-item-active" : ""}
+          ${PageActive === 'contacto' ? 'navbar-item-active' : ''}
         `}
         >
           <Link to="/contacto/" className="navbar-link flex-center">
@@ -59,8 +59,8 @@ const Navbar = () => {
         </li>
       </ul>
     </nav>
-  );
-};
+  )
+}
 
 // Navbar.propTypes = {
 //   PageActive: PropTypes.string,
@@ -70,4 +70,4 @@ const Navbar = () => {
 //   PageActive: "",
 // };
 
-export default Navbar;
+export default Navbar

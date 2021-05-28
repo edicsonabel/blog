@@ -1,12 +1,12 @@
-import React from "react"
-import Img from "gatsby-image"
-import { Link } from "gatsby"
+import React from 'react'
+import Img from 'gatsby-image'
+import { Link } from 'gatsby'
 
 /*    COMPONENTS & UTILS    */
-import Tag from "../components/Tag"
-import { slugify, dateFormat } from "../utils/utility"
+import Tag from '../components/Tag'
+import { slugify, dateFormat } from '../utils/utility'
 
-const Header = ({ image, title, tags, author, authorImg, date }) =>(
+const Header = ({ image, title, tags, author, authorImg, date }) => (
   <header>
     <Img className="header-image" fluid={image.childImageSharp.fluid} />
     <div className="header-box">
@@ -21,7 +21,7 @@ const Header = ({ image, title, tags, author, authorImg, date }) =>(
           <Img className="header-action-image" fluid={authorImg} />
           <span className="body-2">{author}</span>
         </Link>
-        <span className="header-action-date" >{dateFormat(date)}</span>
+        <span className="header-action-date">{dateFormat(date)}</span>
       </div>
     </div>
   </header>

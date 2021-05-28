@@ -1,12 +1,12 @@
-import React, { Fragment } from "react";
-import { Link } from "gatsby";
-import { graphql, StaticQuery } from "gatsby";
-import Img from "gatsby-image";
+import React, { Fragment } from 'react'
+import { Link } from 'gatsby'
+import { graphql, StaticQuery } from 'gatsby'
+import Img from 'gatsby-image'
 
 /*    COMPONENTS & UTILS    */
-import PageLayout from "../templates/pages";
-import SEO from "../components/SEO";
-import Tag from "../components/Tag";
+import PageLayout from '../templates/pages'
+import SEO from '../components/SEO'
+import Tag from '../components/Tag'
 
 const blogQuery = graphql`
   query {
@@ -33,14 +33,14 @@ const blogQuery = graphql`
       }
     }
   }
-`;
+`
 const BlogPage = () => (
-  <PageLayout active="blog" >
+  <PageLayout active="blog">
     <SEO title="Blog" type="page" />
     <h1>Blog</h1>
     <StaticQuery
       query={blogQuery}
-      render={(data) => (
+      render={data => (
         <Fragment>
           {data.allMdx.edges.map(({ node }) => (
             <div key={node.id}>
@@ -49,7 +49,7 @@ const BlogPage = () => (
                 {node.frontmatter.title}
               </Link>
               <div className="tag-box">
-                {node.frontmatter.tags.map((tag) => (
+                {node.frontmatter.tags.map(tag => (
                   <Tag key={tag} name={tag} />
                 ))}
               </div>
@@ -59,6 +59,6 @@ const BlogPage = () => (
       )}
     />
   </PageLayout>
-);
+)
 
-export default BlogPage;
+export default BlogPage

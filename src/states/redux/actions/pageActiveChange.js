@@ -1,10 +1,10 @@
-export const type = "pageActiveChange";
+export const type = 'pageActiveChange'
 
-const pageActiveChange = (page = "") => {
+const pageActiveChange = (page = '') => {
   return {
     type,
     payload: page,
-  };
-};
+  }
+}
 
-export default pageActiveChange;
+export default pageActiveChange
