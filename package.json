@@ -39,9 +39,10 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "start": "gatsby develop -H 0.0.0.0",
+    "clean": "gatsby clean",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "start": "gatsby develop -H 0.0.0.0"
   },
   "repository": {
     "type": "git",
