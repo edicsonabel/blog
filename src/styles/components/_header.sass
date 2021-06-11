@@ -1,6 +1,6 @@
 // HEADER COMPONENT
 .header
-  &-image
+  &__image
     position: absolute
     width: 100%
     height: 60vh
@@ -8,7 +8,7 @@
     right: 0
     top: 0
     border-radius: 0px 0px 24px 24px
-  &-box
+  &__box
     position: relative
     width: calc(100% - 64px)
     margin-right: auto
@@ -21,20 +21,18 @@
     & > *
       padding: 0 16px
       margin: 0
-  &-action
+  &__action
     padding-top: 16px
     display: flex
     justify-content: space-between
     align-items: center
-    &-box
+    &__box
       display: flex
       justify-content: center
       align-items: center
-    &-image
+    &__image
       display: inline-block
       border-radius: 50%
       height: 24px
       width: 24px
       margin-right: 8px
-  &-date
-    @include body-2

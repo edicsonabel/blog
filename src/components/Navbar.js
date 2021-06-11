@@ -10,64 +10,56 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <ul className="navbar-list flex-center">
+      <ul className="navbar__list flex-center">
         <li
-          className={`item-home navbar-item
-          ${PageActive === 'home' ? 'navbar-item-active' : ''}
+          className={`navbar__item--home navbar__item
+          ${PageActive === 'home' ? 'navbar__item--active' : ''}
         `}
         >
-          <Link to="/" className="navbar-link flex-center">
-            <i className="navbar-icon i-home" />
-            <span className="navbar-text">Home</span>
+          <Link to="/" className="navbar__link flex-center">
+            <i className="navbar__icon i-home" />
+            <span className="navbar__text body-1">Home</span>
           </Link>
         </li>
         <li
-          className={`item-blog navbar-item
-          ${PageActive === 'blog' ? 'navbar-item-active' : ''}
+          className={`navbar__item--blog navbar__item
+          ${PageActive === 'blog' ? 'navbar__item--active' : ''}
         `}
         >
-          <Link to="/blog/" className="navbar-link flex-center">
-            <i className="navbar-icon i-pen" />
-            <span className="navbar-text">Blog</span>
+          <Link to="/blog/" className="navbar__link flex-center">
+            <i className="navbar__icon i-pen" />
+            <span className="navbar__text body-1">Blog</span>
           </Link>
         </li>
         <li
-          className={`item-portfolio navbar-item
-          ${PageActive === 'portafolio' ? 'navbar-item-active' : ''}
+          className={`navbar__item--portfolio navbar__item
+          ${PageActive === 'portafolio' ? 'navbar__item--active' : ''}
         `}
         >
-          <Link to="/portafolio/" className="navbar-link flex-center">
-            <i className="navbar-icon i-portfolio" />
-            <span className="navbar-text">Portafolio</span>
+          <Link to="/portafolio/" className="navbar__link flex-center">
+            <i className="navbar__icon i-portfolio" />
+            <span className="navbar__text body-1">Portafolio</span>
           </Link>
         </li>
         <li
-          className={`item-contact navbar-item
-          ${PageActive === 'contacto' ? 'navbar-item-active' : ''}
+          className={`navbar__item--contact navbar__item
+          ${PageActive === 'contacto' ? 'navbar__item--active' : ''}
         `}
         >
-          <Link to="/contacto/" className="navbar-link flex-center">
-            <i className="navbar-icon i-user" />
-            <span className="navbar-text">Contacto</span>
+          <Link to="/contacto/" className="navbar__link flex-center">
+            <i className="navbar__icon i-user" />
+            <span className="navbar__text body-1">Contacto</span>
           </Link>
         </li>
-        <li className="item-search navbar-item">
-          <Link to="#" className="navbar-link flex-center">
-            <i className="navbar-icon i-search" />
-            <span className="navbar-text">Buscar</span>
+        <li className="navbar__item--search navbar__item">
+          <Link to="#" className="navbar__link flex-center">
+            <i className="navbar__icon i-search" />
+            <span className="navbar__text body-1">Buscar</span>
           </Link>
         </li>
       </ul>
     </nav>
   )
 }
-
-// Navbar.propTypes = {
-//   PageActive: PropTypes.string,
-// };
-
-// Navbar.defaultProps = {
-//   PageActive: "",
-// };
 
 export default Navbar

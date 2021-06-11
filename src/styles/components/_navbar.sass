@@ -5,7 +5,7 @@
   bottom: 8px
   right: 0
   left: 0
-  &-list
+  &__list
     flex-direction: row
     width: calc(100% - 16px)
     height: 52px
@@ -15,34 +15,29 @@
     overflow: hidden
     background-color: var(--dark)
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
-  &-item
+  &__link
+    display: flex
+    height: 100%
+    flex-direction: column
+  &__icon
+    font-size: 20px
+  &__text
+    font-size: 10px
+    margin-top: 4px
+    line-height: initial
+    color: var(--secondary)
+  &__item
     height: 100%
     flex-grow: 1
     flex-basis: 0
     border-radius: 20px
     overflow: hidden
-    &-active
-      .navbar-text,
-      .navbar-icon
-        display: initial
-        color: var(--primary)
-  &-link
-    display: flex
-    height: 100%
-    flex-direction: column
-  &-icon
-    font-size: 20px
-  &-text
-    @include body-1
-    font-size: 10px
-    margin-top: 4px
-    line-height: initial
-    color: var(--secondary)
-.item
-  &-portfolio
-    order: 1
-  &-home
-    order: 2
-  &-blog,
-  &-search
-    order: 3
+    &--active *
+      color: var(--primary)
+    &--portfolio
+      order: 1
+    &--home
+      order: 2
+    &--blog,
+    &--search
+      order: 3     

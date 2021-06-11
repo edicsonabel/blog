@@ -8,20 +8,20 @@ import { slugify, dateFormat } from '../utils/utility'
 
 const Header = ({ image, title, tags, author, authorImg, date }) => (
   <header>
-    <Img className="header-image" fluid={image.childImageSharp.fluid} />
-    <div className="header-box">
+    <Img className="header__image" fluid={image.childImageSharp.fluid} />
+    <div className="header__box">
       <h1 className="title-1 text-center">{title}</h1>
-      <div className="tag-box">
+      <div className="tag__box">
         {tags.map(tag => (
           <Tag key={tag} name={tag} />
         ))}
       </div>
-      <div className="header-action">
-        <Link className="header-action-box" to={`/author/${slugify(author)}`}>
-          <Img className="header-action-image" fluid={authorImg} />
-          <span className="body-2">{author}</span>
+      <div className="header__action">
+        <Link className="header__action__box" to={`/author/${slugify(author)}`}>
+          <Img className="header__action__image" fluid={authorImg} />
+          <span className="header__action__author body-2">{author}</span>
         </Link>
-        <span className="header-action-date">{dateFormat(date)}</span>
+        <span className="header__action__date body-2">{dateFormat(date)}</span>
       </div>
     </div>
   </header>

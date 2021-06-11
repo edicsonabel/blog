@@ -48,7 +48,7 @@ const BlogPage = () => (
                 <Img fluid={node.frontmatter.image.childImageSharp.fluid} />
                 {node.frontmatter.title}
               </Link>
-              <div className="tag-box">
+              <div className="tag__box">
                 {node.frontmatter.tags.map(tag => (
                   <Tag key={tag} name={tag} />
                 ))}

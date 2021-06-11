@@ -2,7 +2,7 @@ module.exports = {
   pathPrefix: `/`,
   siteMetadata: {
     title: `Edicson Abel`,
-    description: `Soy un desarollador 💻 intentando ayudarte a mejorar tus habilidades a través de artículos, cursos, vídeos y tutoriales. Así que comencemos 😎.`,
+    description: `Aprende a programar con JavaScript, React, Node, Linux y más. Te ayudaré en tu camino de desarrollador Front-End y Back-End, así dominaremos el mundo`,
     author: `@edicsonabel_`,
   },
   plugins: [
