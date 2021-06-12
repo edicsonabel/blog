@@ -20,7 +20,7 @@ Los GPT son tablas de partición GUID que tienen algunos discos duros, y esto no
 
 Para quitar la protección GPT de tu disco duro tienes dos opciones, la primera opción es cuando estás navegando en tu computador y el disco con la protección GPT no contiene alojado el sistema operativo windows. La segunda opción es cuando estás instalando un sistema operativo (SO) y el disco donde quieres instalar el SO contiene protección GPT que bloquea el proceso.
 
-## Opción 1: Navegando en tu computador.
+## Opción 1: Navegando en tu computador
 
 Para eliminar el GPT dentro de tu computador, debes realizar los siguientes pasos.
 
@@ -50,7 +50,7 @@ También puedes limpiar todo el disco y así eliminar el formato que tiene; eso 
 
 - Por ultimo debemos escribir el comando para limpiar que es `clean` y pulsar enter; esto limpiará todo el disco dejándolo sin formato y sin protección GPT.
 
-## Opción 2: Instalando un sistema operativo (SO).
+## Opción 2: Instalando un sistema operativo (SO)
 
 Cuando estamos instalando un SO en una PC y el proceso se ve interrumpido por un disco duro GPT, debemos realizar los siguientes pasos para poder eliminarlo.
 
