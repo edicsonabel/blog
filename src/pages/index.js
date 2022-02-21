@@ -51,7 +51,11 @@ const IndexPage = () => {
 
   return (
     <>
-      <Seo title="🚀 Un blog para developers, o eso creo 😬" type="page" />
+      <Seo
+        title="🚀 JavaScript, React, Node, Linux y más"
+        description="Te ayudaré en tu camino de desarrollador Front-End y Back-End, así dominaremos el mundo"
+        type="page"
+      />
       <PageLayout active="home">
         <StaticQuery
           query={postsQuery}

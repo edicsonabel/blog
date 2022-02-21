@@ -75,7 +75,11 @@ const PostLayout = ({ data }) => {
           class: BodyClass,
         }}
       />
-      <Seo title={title} description={excerpt ? excerpt : mdxExcerpt} />
+      <Seo
+        title={title}
+        description={excerpt ? excerpt : mdxExcerpt}
+        author={author.twitter}
+      />
       <Header
         title={title}
         image={image.childImageSharp.gatsbyImageData}

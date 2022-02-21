@@ -2,7 +2,14 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-const Seo = ({ description = ``, lang = `es`, meta = [], title, type }) => {
+const Seo = ({
+  description = ``,
+  lang = `es`,
+  meta = [],
+  author = '',
+  title,
+  type,
+}) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -10,7 +17,7 @@ const Seo = ({ description = ``, lang = `es`, meta = [], title, type }) => {
           siteMetadata {
             title
             description
-            author
+            twitter
           }
         }
       }
@@ -18,15 +25,16 @@ const Seo = ({ description = ``, lang = `es`, meta = [], title, type }) => {
   )
 
   const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+  const titleSite = site.siteMetadata?.title
+  const metaTitle = type === 'page' ? `${title} | ${titleSite}` : `${title}`
+  const twitterAuthor = author ? `@${author}` : `@${site.siteMetadata?.twitter}`
 
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={type === 'page' ? `%s | ${defaultTitle}` : `%s`}
+      title={metaTitle}
       meta={[
         {
           name: `description`,
@@ -34,7 +42,7 @@ const Seo = ({ description = ``, lang = `es`, meta = [], title, type }) => {
         },
         {
           property: `og:title`,
-          content: title,
+          content: metaTitle,
         },
         {
           property: `og:description`,
@@ -49,12 +57,16 @@ const Seo = ({ description = ``, lang = `es`, meta = [], title, type }) => {
           content: `summary`,
         },
         {
+          name: `twitter:site`,
+          content: `@${site.siteMetadata?.twitter}`,
+        },
+        {
           name: `twitter:creator`,
-          content: site.siteMetadata?.author || ``,
+          content: twitterAuthor,
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: metaTitle,
         },
         {
           name: `twitter:description`,
