@@ -28,6 +28,7 @@ export const postInfo = graphql`
           childImageSharp {
             gatsbyImageData(width: 1200)
           }
+          publicURL
         }
       }
       excerpt
@@ -79,6 +80,7 @@ const PostLayout = ({ data }) => {
         title={title}
         description={excerpt ? excerpt : mdxExcerpt}
         author={author.twitter}
+        image={image.publicURL}
       />
       <Header
         title={title}

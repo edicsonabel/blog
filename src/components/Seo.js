@@ -3,16 +3,23 @@ import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
 const Seo = ({
-  description = ``,
-  lang = `es`,
+  description = '',
+  lang = 'es',
   meta = [],
   author = '',
+  image = '',
   title,
   type,
 }) => {
-  const { site } = useStaticQuery(
+  const { site, imageSharp } = useStaticQuery(
     graphql`
       query {
+        imageSharp(fixed: { originalName: { eq: "og-image.jpg" } }) {
+          original {
+            src
+          }
+        }
+
         site {
           siteMetadata {
             title
@@ -28,6 +35,7 @@ const Seo = ({
   const titleSite = site.siteMetadata?.title
   const metaTitle = type === 'page' ? `${title} | ${titleSite}` : `${title}`
   const twitterAuthor = author ? `@${author}` : `@${site.siteMetadata?.twitter}`
+  const metaImage = image || imageSharp.original.src
 
   return (
     <Helmet
@@ -49,12 +57,16 @@ const Seo = ({
           content: metaDescription,
         },
         {
+          property: `og:image`,
+          content: metaImage,
+        },
+        {
           property: `og:type`,
           content: `website`,
         },
         {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
         },
         {
           name: `twitter:site`,
