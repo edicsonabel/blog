@@ -43,6 +43,9 @@ jspm_packages/
 # Typescript v1 declaration files
 typings/
 
+# Visual Studio Code Folder
+.vscode
+
 # Optional npm cache directory
 .npm
 
@@ -67,7 +70,7 @@ public
 
 # Yarn
 yarn-error.log
-.pnp/
-.pnp.js
+*.yarn*
+*.pnp*
 # Yarn Integrity file
 .yarn-integrity

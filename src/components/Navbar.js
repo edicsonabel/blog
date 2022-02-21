@@ -1,5 +1,4 @@
 import { Link } from 'gatsby'
-// import PropTypes from "prop-types";
 import React, { useContext } from 'react'
 
 /*    COMPONTENTS AND UTILS    */
@@ -18,7 +17,7 @@ const Navbar = () => {
         >
           <Link to="/" className="navbar__link flex-center">
             <i className="navbar__icon i-home" />
-            <span className="navbar__text body-1">Home</span>
+            <span className="navbar__text">Home</span>
           </Link>
         </li>
         <li
@@ -28,33 +27,37 @@ const Navbar = () => {
         >
           <Link to="/blog/" className="navbar__link flex-center">
             <i className="navbar__icon i-pen" />
-            <span className="navbar__text body-1">Blog</span>
+            <span className="navbar__text">Blog</span>
           </Link>
         </li>
         <li
           className={`navbar__item--portfolio navbar__item
-          ${PageActive === 'portafolio' ? 'navbar__item--active' : ''}
+          ${PageActive === 'portfolio' ? 'navbar__item--active' : ''}
         `}
         >
-          <Link to="/portafolio/" className="navbar__link flex-center">
+          <Link to="/portfolio/" className="navbar__link flex-center">
             <i className="navbar__icon i-portfolio" />
-            <span className="navbar__text body-1">Portafolio</span>
+            <span className="navbar__text">Portfolio</span>
           </Link>
         </li>
         <li
-          className={`navbar__item--contact navbar__item
-          ${PageActive === 'contacto' ? 'navbar__item--active' : ''}
+          className={`navbar__item--me navbar__item
+          ${PageActive === 'me' ? 'navbar__item--active' : ''}
         `}
         >
-          <Link to="/contacto/" className="navbar__link flex-center">
+          <Link to="/me/" className="navbar__link flex-center">
             <i className="navbar__icon i-user" />
-            <span className="navbar__text body-1">Contacto</span>
+            <span className="navbar__text">Sobre mí</span>
           </Link>
         </li>
-        <li className="navbar__item--search navbar__item">
-          <Link to="#" className="navbar__link flex-center">
+        <li
+          className={`navbar__item--search navbar__item
+          ${PageActive === 'search' ? 'navbar__item--active' : ''}
+        `}
+        >
+          <Link to="/search/" className="navbar__link flex-center button">
             <i className="navbar__icon i-search" />
-            <span className="navbar__text body-1">Buscar</span>
+            <span className="navbar__text">Buscar</span>
           </Link>
         </li>
       </ul>
@@ -62,4 +65,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default React.memo(Navbar)

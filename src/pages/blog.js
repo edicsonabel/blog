@@ -1,30 +1,40 @@
-import React, { Fragment } from 'react'
-import { Link } from 'gatsby'
+import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
-import Img from 'gatsby-image'
 
 /*    COMPONENTS & UTILS    */
-import PageLayout from '../templates/pages'
-import SEO from '../components/SEO'
-import Tag from '../components/Tag'
+import PageLayout from 'templates/pages'
+import Seo from 'components/Seo'
+import Card from 'components/Card'
 
-const blogQuery = graphql`
-  query {
-    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          id
-          slug
-          excerpt
-          frontmatter {
-            title
-            author
-            date
-            tags
-            image {
-              childImageSharp {
-                fluid(maxWidth: 600) {
-                  ...GatsbyImageSharpFluid
+const BlogPage = () => {
+  const postsQuery = graphql`
+    query {
+      allAuthorsJson {
+        nodes {
+          name
+          user
+          img {
+            childImageSharp {
+              gatsbyImageData(width: 100)
+            }
+          }
+        }
+      }
+
+      allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+        edges {
+          node {
+            id
+            slug
+            excerpt
+            frontmatter {
+              title
+              author
+              date
+              tags
+              image {
+                childImageSharp {
+                  gatsbyImageData(width: 600)
                 }
               }
             }
@@ -32,33 +42,41 @@ const blogQuery = graphql`
         }
       }
     }
-  }
-`
-const BlogPage = () => (
-  <PageLayout active="blog">
-    <SEO title="Blog" type="page" />
-    <h1>Blog</h1>
-    <StaticQuery
-      query={blogQuery}
-      render={data => (
-        <Fragment>
-          {data.allMdx.edges.map(({ node }) => (
-            <div key={node.id}>
-              <Link className="mr-2" to={`/${node.slug}`}>
-                <Img fluid={node.frontmatter.image.childImageSharp.fluid} />
-                {node.frontmatter.title}
-              </Link>
-              <div className="tag__box">
-                {node.frontmatter.tags.map(tag => (
-                  <Tag key={tag} name={tag} />
+  `
+  return (
+    <>
+      <Seo title="Blog" type="page" />
+      <PageLayout active="blog">
+        <h1>Blog</h1>
+        <StaticQuery
+          query={postsQuery}
+          render={data => {
+            const authors = data.allAuthorsJson.nodes
+            return (
+              <section className="card__grid">
+                {data.allMdx.edges.map(({ node }) => (
+                  <Card
+                    key={node.id}
+                    data={{
+                      slug: node.slug,
+                      image:
+                        node.frontmatter.image.childImageSharp.gatsbyImageData,
+                      title: node.frontmatter.title,
+                      tags: node.frontmatter.tags,
+                      author: authors.filter(
+                        author => author.user === node.frontmatter.author
+                      )[0],
+                      excerpt: node.excerpt,
+                    }}
+                  />
                 ))}
-              </div>
-            </div>
-          ))}
-        </Fragment>
-      )}
-    />
-  </PageLayout>
-)
+              </section>
+            )
+          }}
+        />
+      </PageLayout>
+    </>
+  )
+}
 
-export default BlogPage
+export default React.memo(BlogPage)

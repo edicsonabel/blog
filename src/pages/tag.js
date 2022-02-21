@@ -1,13 +1,16 @@
 import React from 'react'
 
-import PageLayout from '../templates/pages'
-import SEO from '../components/SEO'
+/*    COMPONENTS & UTILS    */
+import PageLayout from 'templates/pages'
+import Seo from 'components/Seo'
 
 const TagsPage = () => (
-  <PageLayout>
-    <SEO title="Tags" />
-    <h1>Tags</h1>
-  </PageLayout>
+  <>
+    <Seo title="Tags" />
+    <PageLayout>
+      <h1>Tags</h1>
+    </PageLayout>
+  </>
 )
 
-export default TagsPage
+export default React.memo(TagsPage)

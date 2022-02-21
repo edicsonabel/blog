@@ -1,38 +1,107 @@
 // HEADER COMPONENT
 .header
   &__image
-    position: absolute
+    position: relative
     width: 100%
     height: 60vh
     left: 0
     right: 0
     top: 0
-    border-radius: 0px 0px 24px 24px
+    border-radius: 0 0 1.5rem 1.5rem
+  &__title
+    color: var(--blue-dark)
+    body.dark &
+      color: var(--light)
   &__box
     position: relative
-    width: calc(100% - 64px)
+    width: calc(100% - 4rem)
     margin-right: auto
     margin-left: auto
-    margin-top: -72px
-    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25)
-    border-radius: 24px
-    background-color: var(--mode-dark)
-    padding: 16px 0
+    margin-top: -4.5rem
+    box-shadow: 0 .25rem 1rem rgba(0, 0, 0, 0.25)
+    border-radius: 1.5rem
+    padding: 1rem 0
+    max-width: $md
+    background-color: var(--light)
+    body.dark &
+      box-shadow: 0 .25rem 1rem rgba(255, 255, 255, 0.1)
+      background-color: var(--black)
     & > *
-      padding: 0 16px
+      padding: 0 1rem
       margin: 0
-  &__action
-    padding-top: 16px
+  &__footer
     display: flex
+    flex-direction: column
     justify-content: space-between
     align-items: center
+    padding-top: 1rem
+    margin-left: 2rem
+    margin-right: 2rem
+    @media ( min-width: $md )
+      flex-direction: row
+  &__info
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-evenly
+    align-items: center
+    // body.light &
+    //   color: var(--dark)
+    @media ( min-width: $md )
+      justify-content: flex-start
     &__box
       display: flex
       justify-content: center
       align-items: center
     &__image
-      display: inline-block
       border-radius: 50%
-      height: 24px
-      width: 24px
-      margin-right: 8px
+      height: 1.5rem
+      width: 1.5rem
+      margin-right: .4rem
+    &__date, &__reading-time
+      body.dark &
+        color: var(--light)
+    &__box, &__author, &__date, &__reading-time
+      @include body-2
+      font-size: .75rem
+      line-height: 2.5
+      padding: 0 1rem
+      @media ( min-width: $md )
+        padding: 0 .4rem
+    &__author
+      padding: 0
+      body.light &
+        color: var(--dark)
+  &__action
+    padding-top: 1rem
+    display: flex
+    justify-content: space-between
+    align-items: center
+    width: 100%
+    max-width: 10rem
+    @media ( min-width: $md )
+      justify-content: space-evenly
+      padding-top: initial
+    &__link
+      font-size: .6rem
+      width: 1.3rem
+      height: 1.3rem
+      border-radius: 50%
+      display: flex
+      justify-content: center
+      align-items: center
+      background: var(--blue-dark)
+      cursor: pointer
+      &:active
+          border: .05rem solid var(--primary)
+      body.dark &
+        background: var(--gray-dark)
+        &:active
+          border: .1rem solid rgb(255 255 255 / 10%)
+      span,i
+        color: var(--light)
+      @media ( min-width: $md )
+        margin-left: .2rem
+        margin-right: .2rem
+  @media (min-width: $lg)
+    &__image
+      height: 80vh

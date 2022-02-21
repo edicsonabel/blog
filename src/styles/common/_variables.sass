@@ -1,13 +1,26 @@
 // VARIABLES
 \:root
+  // Colors
   --primary: #4ECDC4
-  --primary-filter: invert(80%) sepia(11%) saturate(1975%) hue-rotate(123deg) brightness(89%) contrast(89%)
+  // --secondary: #FFE100
   --secondary: #EEF36A
-  --secondary-filter: invert(99%) sepia(45%) saturate(4499%) hue-rotate(316deg) brightness(128%) contrast(90%)
   --light: #F5F3F5
   --dark: #242325
   --blue-dark: #001021
-  --mode-dark: #3C4043
-  --mode-light: var(--light)
-  --text-dark: var(--dark)
-  --text-light: var(--light)
+  --gray-dark: #3C4043
+  --black: #000a14
+// Small devices (landscape phones, 576px and up)
+$sm: 36rem
+
+// Medium devices (tablets, 768px and up)
+$md: 48rem
+
+// Large devices (desktops, 992px and up)
+$lg: 62rem
+
+// Extra large devices (large desktops, 1200px and up)
+$xl: 75rem
+
+@media (min-width: $md) 
+  \:root
+    font-size: 18px

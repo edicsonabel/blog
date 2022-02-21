@@ -1,0 +1,89 @@
+// CARD COMPONENT
+.card
+  position: relative
+  display: block
+  border-radius: 1.5rem
+  overflow: hidden
+  text-decoration: none
+  height: 60vh
+  max-height: 70vh
+  box-shadow: 0 .25rem 1rem rgba(0, 0, 0, 0.25)
+  body.dark &
+    box-shadow: 0 .25rem 1rem rgba(255, 255, 255, 0.1)
+  &__grid
+    display: grid
+    grid-gap: 2rem 1rem
+    grid-template-columns: 1fr
+    @media ( min-width: $md )
+      grid-template-columns: 1fr 1fr  
+    @media ( min-width: $lg )
+      grid-gap: 2rem
+      grid-template-columns: 1fr 1fr 1fr 
+  $bg-color-light: var(--blue-dark)
+  $bg-color-dark: var(--black)
+  &__title
+    padding: 0
+    color: var(--secondary)
+  &__box
+    display: flex
+    align-items: center
+    position: absolute
+    top: 0
+    right: 0
+    left: 0
+    padding: 1.5rem
+    justify-content: space-between
+  &__author
+    display: flex
+    grid-gap: .5em
+    align-items: center
+    color: var(--secondary)
+    &__thumb
+      width: 1.5rem
+      border-radius: 50%
+  &__image
+    width: auto
+    height: 60vh
+  &__overlay
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    z-index: 1      
+    border-radius: 1.5rem    
+    transform: translateY(100%)
+    transition: .2s ease-in-out
+    background-color: $bg-color-light
+    body.dark &
+      background-color: $bg-color-dark
+  &:hover &__overlay
+    transform: translateY(0)
+  &__header
+    position: relative
+    display: flex
+    align-items: center
+    padding: 1.5rem
+    border-radius: 1.5rem 0 0 0
+    transform: translateY(-100%)
+    transition: .2s ease-in-out
+    background-color: $bg-color-light
+    body.dark &
+      background-color: $bg-color-dark
+    &::before
+      content: ""
+      position: absolute
+      background-color: transparent
+      top: -3rem
+      right: 0
+      height: 3rem
+      width: 1.5rem
+      border-bottom-right-radius: 1.5rem
+      box-shadow: 0 1.5rem 0 0 $bg-color-light
+      body.dark &
+        box-shadow: 0 1.5rem 0 0 $bg-color-dark
+  &:hover &__header
+    transform: translateY(0)
+  &__description 
+    padding: 0 1.5rem 1.5rem
+    color: var(--light)
+    overflow: hidden

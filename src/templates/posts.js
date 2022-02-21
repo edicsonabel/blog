@@ -1,23 +1,23 @@
 /*    LIBRARIES    */
-import React, { Fragment, Component } from 'react'
+import React, { useContext, useEffect } from 'react'
+import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
-/*    STYLES    */
-import '../styles/index.sass'
-
 /*    COMPONTENTS AND UTILS    */
-import SEO from '../components/SEO'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
-import { DataContext } from '../states/context'
+import Seo from 'components/Seo'
+import Header from 'components/Header'
+import CodeBlock from 'components/CodeBlock'
+import { DataContext } from 'states/context'
 
-export const postInfo = () => graphql`
+export const postInfo = graphql`
   query BlogPostQuery($id: String!, $author: String!) {
     mdx(id: { eq: $id }) {
       body
+      internal {
+        content
+      }
       frontmatter {
         author
         date
@@ -26,69 +26,74 @@ export const postInfo = () => graphql`
         title
         image {
           childImageSharp {
-            fluid(maxWidth: 1200) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(width: 1200)
           }
         }
       }
       excerpt
     }
 
-    allImageSharp(filter: { id: { eq: $author } }) {
+    allAuthorsJson(filter: { id: { eq: $author } }) {
       nodes {
-        fluid(maxWidth: 400) {
-          aspectRatio
-          base64
-          sizes
-          src
-          srcSet
-        }
         id
+        name
+        user
+        twitter
+        img {
+          childImageSharp {
+            gatsbyImageData(width: 100)
+          }
+        }
       }
     }
   }
 `
 
-export default class PostLayout extends Component {
-  static contextType = DataContext
+const PostLayout = ({ data }) => {
+  const { setPageActive, BodyClass } = useContext(DataContext)
 
-  componentDidMount() {
-    const { setPageActive } = this.context
-    setPageActive('none')
+  const components = {
+    Link,
+    pre: props => <div {...props} />,
+    code: CodeBlock,
   }
 
-  render() {
-    const {
-      title,
-      image,
-      excerpt,
-      author,
-      tags,
-      date,
-    } = this.props.data.mdx.frontmatter
-    const { body, mdxExcerpt } = this.props.data.mdx
-    const authorImg = this.props.data.allImageSharp.nodes[0].fluid
+  useEffect(() => {
+    setPageActive('blog')
+  }, [setPageActive])
 
-    return (
-      <Fragment>
-        <SEO title={title} description={excerpt ? excerpt : mdxExcerpt} />
-        <Navbar />
-        <Header
-          title={title}
-          image={image}
-          tags={tags}
-          author={author}
-          authorImg={authorImg}
-          date={date}
-        />
-        <main className="container main-post">
-          <MDXProvider components={Link}>
-            <MDXRenderer>{body}</MDXRenderer>
-          </MDXProvider>
-        </main>
-        <Footer />
-      </Fragment>
-    )
-  }
+  const { title, image, excerpt, tags, date } = data.mdx.frontmatter
+  const { body, mdxExcerpt, internal } = data.mdx
+  const author = data.allAuthorsJson.nodes[0]
+  const averageWPM = 200
+  const readTime = Math.ceil(internal.content.split(' ').length / averageWPM)
+
+  return (
+    <>
+      <Helmet
+        bodyAttributes={{
+          class: BodyClass,
+        }}
+      />
+      <Seo title={title} description={excerpt ? excerpt : mdxExcerpt} />
+      <Header
+        title={title}
+        image={image.childImageSharp.gatsbyImageData}
+        tags={tags}
+        authorName={author.name}
+        authorUser={author.user}
+        authorImg={author.img.childImageSharp.gatsbyImageData}
+        authorTwitter={author.twitter}
+        date={date}
+        readTime={readTime}
+      />
+      <main className="container main-post">
+        <MDXProvider components={components}>
+          <MDXRenderer>{body}</MDXRenderer>
+        </MDXProvider>
+      </main>
+    </>
+  )
 }
+
+export default PostLayout

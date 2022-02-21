@@ -4,15 +4,26 @@ import { ContextProvider } from './context'
 // import store from "./store";
 
 /*    COMPONTENTS AND UTILS    */
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import ModeButton from 'components/ModeButton'
+import Navbar from 'components/Navbar'
+import Footer from 'components/Footer'
 
-export default ({ element }) => (
-  <ContextProvider>
-    {/* <Provider store={store}> */}
-    <Navbar />
-    {element}
-    <Footer />
-    {/* </Provider> */}
-  </ContextProvider>
-)
+/*    STYLES    */
+import 'styles/index.sass'
+
+const States = ({ element }) => {
+  return (
+    <>
+      <ContextProvider>
+        {/* <Provider store={store}> */}
+        <ModeButton />
+        <Navbar />
+        {element}
+        {/* </Provider> */}
+      </ContextProvider>
+      <Footer />
+    </>
+  )
+}
+
+export default States

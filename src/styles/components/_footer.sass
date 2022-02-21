@@ -1,0 +1,50 @@
+.footer
+  display: flex
+  justify-content: center
+  flex-direction: column
+  margin-top: 2rem
+  box-sizing: border-box
+  overflow: hidden
+  color: var(--light)
+  $bg-color-light: --black
+  &__wave
+    width: 106%
+    max-width: 106%
+    height: 40px
+    position: relative
+    left: -2%
+    top: 1px
+    background-repeat: no-repeat
+    background-position: center center
+    background-size: 100% 100%
+    path
+      fill: var($bg-color-light)
+  section
+    padding:.5rem 1rem 1rem
+    text-align: center
+    background-color: var($bg-color-light)
+    &:last-child
+      padding-bottom: 8rem
+  &__social
+    display: flex
+    justify-content: center
+    align-items: center
+    &__link
+      display: flex
+      justify-content: center
+      margin: 0 .2rem
+      align-items: center
+      width: 2.5rem
+      height: 2.5rem
+      border-radius: 50%
+      transition:.3s ease all
+      &:hover
+        background-color: var(--gray-dark)
+      span,i
+        color: var(--light)
+  &__copyright
+    span
+      display: inline-block
+    body.light & a
+      color: var(--secondary)
+  

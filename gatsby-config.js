@@ -1,18 +1,87 @@
+require('dotenv').config()
+
+const getAllPosts = `
+{
+  allAuthorsJson {
+    nodes {
+      name
+      user
+    }
+  }
+  allMdx(sort: {fields: [frontmatter___date], order: DESC}) {
+    edges {
+      node {
+        slug
+        excerpt
+        frontmatter {
+          title
+          author
+          date
+          tags
+        }
+      }
+    }
+  }
+}
+`
+
+const queries = [
+  {
+    query: getAllPosts,
+    transformer: ({ data }) => {
+      const authors = data.allAuthorsJson.nodes
+      const posts = data.allMdx.edges.map(({ node }) => ({
+        objectID: node.slug,
+        title: node.frontmatter.title,
+        excerpt: node.excerpt,
+        date: node.frontmatter.date,
+        tags: node.frontmatter.tags,
+        author: authors.filter(
+          author => author.user === node.frontmatter.author
+        )[0],
+      }))
+      return posts
+    },
+  },
+]
+
 module.exports = {
   pathPrefix: `/`,
   siteMetadata: {
     title: `Edicson Abel`,
     description: `Aprende a programar con JavaScript, React, Node, Linux y más. Te ayudaré en tu camino de desarrollador Front-End y Back-End, así dominaremos el mundo`,
     author: `@edicsonabel_`,
+    facebook: `EdicsonAbel`,
+    github: `edicsonabel`,
+    gitlab: `edicsonabel`,
+    instagram: `edicsonabel_`,
+    linkedin: `edicsonabel`,
+    twitter: `edicsonabel_`,
+    youtube: `EdicsonAbel`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
+    'gatsby-plugin-root-import',
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.GATSBY_ALGOLIA_ADMIN_API_KEY,
+        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME_POSTS, // for all queries
+        queries,
+        chunkSize: 10000, // default: 1000
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/src/assets/images`,
       },
     },
     {
@@ -22,8 +91,13 @@ module.exports = {
         path: `${__dirname}/src/posts`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/src/data`,
+      },
+    },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -44,10 +118,10 @@ module.exports = {
         name: `⚡ Edicson Abel`,
         short_name: `⚡EA`,
         start_url: `/`,
-        background_color: `#242325`,
-        theme_color: `#242325`,
+        background_color: `#000a14`,
+        theme_color: `#000a14`,
         display: `minimal-ui`,
-        icon: `src/images/icon.svg`,
+        icon: `src/assets/icon.svg`,
       },
     },
   ],

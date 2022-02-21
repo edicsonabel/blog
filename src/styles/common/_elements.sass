@@ -6,12 +6,57 @@
   margin: 0
   box-sizing: border-box
   max-width: 100%
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+  -webkit-tap-highlight-color: transparent
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+#___gatsby
+  overflow: hidden
+  display: flex
+  justify-content: space-between
+  flex-direction: column
+  min-height: 100vh
 a
   text-decoration: none
-  color: var(--secondary)
+  &, &:visited
+    color: initial
 li
   list-style-type: none
 body
+  &, & *::before,& *::after
+    transition: color .3s ease, background .3s ease
   @include body-1
-  color: var(--text-light)
-  background-color: var(--mode-dark)
+  min-height: 100vh
+  &.light 
+    color: var(--dark)
+    background-color: var(--light)
+    & a
+      color: var(--primary)
+  &.dark 
+    color: var(--light)
+    background-color: var(--blue-dark)
+    & a
+      color: var(--secondary)
+code
+  display: inline-block
+  padding: 0.2em 0.4em
+  margin: 0
+  font-size: 85%
+  border-radius: .4rem
+  background-color: rgba(110,118,129,.15)
+  color: #FF5959
+  body.dark &
+    background-color: rgba(110,118,129,.4)
+    color: #FABB51
+h1,h2,h3,h4,h5,h6
+  line-height: 1.15
+  padding-top: .67em
+  margin-top: 0
+button
+  background-color: transparent
+  border: none
+  cursor: pointer

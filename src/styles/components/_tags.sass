@@ -1,17 +1,24 @@
 // TAG COMPONENT
 .tag
-  color: var(--light)
   display: inline-block
-  margin-right: 8px
-  padding: 2px 4px
-  border-radius: 8px 8px 8px 0px
-  background-color: var(--dark)
-  &--youtube
-    background-color: #FF0000
+  margin-right: .5rem
+  padding: .125rem .25rem
+  border-radius: .5rem .5rem .5rem 0px
+  background-color: var(--blue-dark)
+  body.light &
+    color: var(--secondary)
+  body.dark &
+    background-color: var(--gray-dark)
     color: var(--light)
   &:first-child
-    margin-left: 8px
+    margin-left: .5rem
   &__box
     text-align: center
-    padding-top: 16px
+    padding-top: 1rem
     width: 100%
+  body.light .header__box &
+    background-color: var(--blue-dark)
+    color: var(--secondary)
+  body.dark .header__box &
+    background-color: var(--gray-dark)
+    color: var(--light)

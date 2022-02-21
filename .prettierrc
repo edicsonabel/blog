@@ -1,7 +1,6 @@
 {
   "arrowParens": "avoid",
   "semi": false,
-  "editor.formatOnSave": true,
   "singleQuote": true,
   "tabWidth": 2,
   "trailingComma": "es5",

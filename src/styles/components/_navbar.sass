@@ -2,42 +2,81 @@
 .navbar
   z-index: 20
   position: fixed
-  bottom: 8px
+  bottom: .5rem
   right: 0
   left: 0
   &__list
     flex-direction: row
-    width: calc(100% - 16px)
-    height: 52px
+    width: calc(100% - 1rem)
+    height: 3.5rem
     margin-right: auto
     margin-left: auto
-    border-radius: 20px
+    border-radius: 1.5rem
     overflow: hidden
-    background-color: var(--dark)
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+    box-shadow: 0 .25rem .25rem rgba(0, 0, 0, 0.25)
+    background-color: var(--blue-dark)
+    body.dark &  
+      box-shadow: 0 .25rem .25rem rgba(255, 255, 255, 0.05)
+      background-color: var(--black)
   &__link
     display: flex
     height: 100%
     flex-direction: column
-  &__icon
-    font-size: 20px
-  &__text
-    font-size: 10px
-    margin-top: 4px
-    line-height: initial
+    transition: all 0.5s
     color: var(--secondary)
+    body.dark &
+      color: var(--secondary)
+  &__icon
+    font-size: 1.25rem
+  &__text
+    font-size: .625rem
+    margin-top: .25rem
+    line-height: initial
+  &__icon, &__text
+    color: var(--secondary)
+    body.dark &
+      color: var(--secondary)
   &__item
     height: 100%
     flex-grow: 1
     flex-basis: 0
-    border-radius: 20px
+    border-radius: 1.5rem
     overflow: hidden
     &--active *
       color: var(--primary)
+      body.dark &
+        color: var(--primary)
     &--portfolio
       order: 1
     &--home
       order: 2
     &--blog,
     &--search
-      order: 3     
+      order: 3
+      & button
+        width: 100%
+        background-color: transparent
+        border: none
+        cursor: pointer
+  // Desktop
+  @media (min-width: $lg)
+    bottom: initial
+    top: 0
+    &__list
+      width: 100%
+      border-radius: initial
+    &__link
+      flex-direction: row
+      justify-content: center
+      align-items: center
+    &__input
+      display: initial
+      width: 85%
+    &__text,
+    &__icon
+      @include body-1
+      margin-top: 0
+    &__icon
+      margin-right: .5rem
+    &__item
+      order: initial

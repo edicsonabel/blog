@@ -1,8 +1,6 @@
-<p align="center">
+<p style="text-align: center;">
   <a href="https://edicsonabel.com">
-    <img alt="Edicson Abel" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+    <img alt="Edicson Abel" src="src/assets/icon.svg" width="60" />
   </a>
 </p>
-<h1 align="center">
-    Edicson Abel
-</h1>
+<h1 style="text-align: center;">Edicson Abel</h1>

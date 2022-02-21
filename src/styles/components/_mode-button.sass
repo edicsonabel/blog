@@ -1,0 +1,26 @@
+.mode-button
+  position: fixed
+  right: 1.25rem
+  bottom: 5rem
+  z-index: 20
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 2.5rem
+  height: 2.5rem
+  border-style: hidden
+  border-radius: 50%
+  overflow: hidden
+  cursor: pointer
+  // Desktop
+  @media (min-width: $lg)
+    right: 2rem
+    bottom: 1.4rem
+  body.light &
+    color: #EEF36A
+    background: linear-gradient(40deg, cyan 0%, #0044ff 100%)
+    box-shadow: 0 .25rem 1rem rgba(0, 0, 0, 0.25)
+  body.dark &
+    color: var(--light)
+    background: linear-gradient(40deg, #142F43 0%, #000000 100%)
+    box-shadow: 0 .25rem 1rem rgba(255, 255, 255, 0.1)

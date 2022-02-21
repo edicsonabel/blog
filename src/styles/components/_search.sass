@@ -1,0 +1,79 @@
+.search
+  &__card
+    display: inline-block
+    padding: 1rem
+    border-radius: 1.5rem
+    box-shadow: 0 .25rem 1rem rgba(0, 0, 0, 0.25)
+    background-color: var(--blue-dark)
+    body.dark &
+      box-shadow: 0 .25rem 1rem rgba(255, 255, 255, 0.1)
+      background-color: var(--black)
+    &__title
+      padding: 0
+      font-size: 1.25rem
+      color: var(--secondary)
+    &__description
+      color: var(--light)
+      font-size: .625rem
+      line-height: initial
+    
+  &__box
+    padding-top: 2rem
+    max-width: 600px
+    margin-left: auto
+    margin-right: auto
+  &__sponsor
+    display: flex
+    align-items: center
+    flex-direction: row
+    width: fit-content
+    margin: 1rem 2rem
+    body.light &
+      color: var(--dark)
+    body.dark &
+      color: var(--light)
+    &__img
+      display: inline-block
+      height: 1.125rem
+      margin-left: .4rem
+
+// Algolia Class 
+.ais
+  &-SearchBox
+    &-resetIcon,
+    &-submit
+      display: none
+    &-form
+      display: flex
+      justify-content: space-around
+      padding: 0 1rem
+      width: 100%
+    &-input
+      border-radius: 1.5rem
+      box-shadow: 0 .25rem .25rem rgba(0, 0, 0, 0.05)
+      width: 100%
+      border: none
+      flex: 1
+      outline: none
+      height: 3rem
+      padding: 0 1.1rem
+      &:placeholder
+        opacity: .6
+  
+  &-Hits
+    &-list
+      padding-left: 1rem
+      padding-right: 1rem
+      padding-top: 1rem
+      display: grid
+      grid-gap: .5rem
+      grid-template-columns: 1fr
+      @media ( min-width: $md )
+        grid-template-columns: 1fr 1fr  
+      @media ( min-width: $lg )
+        grid-gap: 2rem
+        grid-template-columns: 1fr 1fr 1fr
+
+  &-Highlight-highlighted
+    font-style: initial
+    color: var(--primary)
