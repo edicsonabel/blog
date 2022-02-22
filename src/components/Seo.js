@@ -14,11 +14,13 @@ const Seo = ({
   title,
   type,
 }) => {
-  const [ localhost, setLocalhost ] = useState('')
+  const [localhost, setLocalhost] = useState('')
+  const [NOW_URL, setURL] = useState('')
   const updateURL = nowURL()
-  
+
   useEffect(() => {
-    setLocalhost(nowURL({pathname: false}))
+    setLocalhost(nowURL({ pathname: false }))
+    setURL(nowURL())
   }, [updateURL])
 
   const { site, imageSharp } = useStaticQuery(
@@ -45,7 +47,7 @@ const Seo = ({
   const titleSite = site.siteMetadata?.title
   const metaTitle = type === 'page' ? `${title} | ${titleSite}` : `${title}`
   const twitterAuthor = author ? `@${author}` : `@${site.siteMetadata?.twitter}`
-  const metaImage = image || imageSharp.original.src
+  const metaImage = `${localhost}${image || imageSharp.original.src}`
 
   return (
     <Helmet
@@ -67,8 +69,12 @@ const Seo = ({
           content: metaDescription,
         },
         {
+          property: `og:url`,
+          content: NOW_URL,
+        },
+        {
           property: `og:image`,
-          content: localhost + metaImage,
+          content: metaImage,
         },
         {
           property: `og:type`,
@@ -93,6 +99,10 @@ const Seo = ({
         {
           name: `twitter:description`,
           content: metaDescription,
+        },
+        {
+          name: `twitter:image`,
+          content: metaImage,
         },
       ].concat(meta)}
     />

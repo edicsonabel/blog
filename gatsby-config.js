@@ -129,5 +129,5 @@ module.exports = {
     twitter: `edicsonabel_`,
     youtube: `EdicsonAbel`,
   },
-  plugins: arrPlugins
+  plugins: arrPlugins,
 }

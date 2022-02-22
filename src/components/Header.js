@@ -17,7 +17,7 @@ const Header = ({
   date,
   readTime,
 }) => {
-  const [ NOW_URL, setURL ] = useState('')
+  const [NOW_URL, setURL] = useState('')
   const updateURL = nowURL()
 
   useEffect(() => {
