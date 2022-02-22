@@ -6,14 +6,14 @@ import { DataContext } from 'states/context'
 const ModeButton = () => {
   const { DarkMode, setDarkMode } = useContext(DataContext)
   useEffect(() => {
-    setDarkMode(DarkMode)
     localStorage.setItem('DarkMode', DarkMode)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [DarkMode])
 
   return (
-    <button onClick={() => setDarkMode(!DarkMode)} className="mode-button">
-      <span className={DarkMode ? 'i-moon-stars' : 'i-sun-cloud'}></span>
+    <button onClick={() => setDarkMode(st => !st)} className="mode-button">
+      <span className="dark i-moon-stars"></span>
+      <span className="light i-sun-cloud"></span>
     </button>
   )
 }

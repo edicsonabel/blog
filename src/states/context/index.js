@@ -9,8 +9,7 @@ const { Provider } = DataContext
 
 export const ContextProvider = ({ children }) => {
   const [PageActive, setPageActive] = useState('none')
-  const mode =
-    isBrowser() && JSON.parse(localStorage.getItem('DarkMode')) === true
+  const mode = isBrowser() && JSON.parse(localStorage.DarkMode)
   const [DarkMode, setDarkMode] = useState(mode)
   const [BodyClass, setBodyClass] = useState('')
 
