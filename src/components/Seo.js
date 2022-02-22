@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
+
+/*    COMPONENTS & UTILS    */
+import { nowURL } from 'utils'
 
 const Seo = ({
   description = '',
@@ -11,6 +14,13 @@ const Seo = ({
   title,
   type,
 }) => {
+  const [ localhost, setLocalhost ] = useState('')
+  const updateURL = nowURL()
+  
+  useEffect(() => {
+    setLocalhost(nowURL({pathname: false}))
+  }, [updateURL])
+
   const { site, imageSharp } = useStaticQuery(
     graphql`
       query {
@@ -58,7 +68,7 @@ const Seo = ({
         },
         {
           property: `og:image`,
-          content: metaImage,
+          content: localhost + metaImage,
         },
         {
           property: `og:type`,

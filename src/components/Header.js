@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { Link } from 'gatsby'
 
@@ -17,7 +17,12 @@ const Header = ({
   date,
   readTime,
 }) => {
-  const NOW_URL = nowURL()
+  const [ NOW_URL, setURL ] = useState('')
+  const updateURL = nowURL()
+
+  useEffect(() => {
+    setURL(nowURL())
+  }, [updateURL])
 
   return (
     <header>
