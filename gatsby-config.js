@@ -1,5 +1,62 @@
 require('dotenv').config()
 
+let arrPlugins = [
+  `gatsby-plugin-react-helmet`,
+  `gatsby-plugin-sass`,
+  'gatsby-plugin-root-import',
+  `gatsby-plugin-image`,
+  `gatsby-plugin-sharp`,
+  `gatsby-transformer-sharp`,
+  `gatsby-transformer-json`,
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `images`,
+      path: `${__dirname}/src/assets/images`,
+    },
+  },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `posts`,
+      path: `${__dirname}/src/posts`,
+    },
+  },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `data`,
+      path: `${__dirname}/src/data`,
+    },
+  },
+  {
+    resolve: `gatsby-plugin-mdx`,
+    options: {
+      extensions: [`.md`, `.mdx`],
+      gatsbyRemarkPlugins: [
+        {
+          resolve: `gatsby-remark-images`,
+          options: {
+            maxWidth: 1200,
+          },
+        },
+      ],
+    },
+  },
+  {
+    resolve: `gatsby-plugin-manifest`,
+    options: {
+      name: `⚡ Edicson Abel`,
+      short_name: `⚡EA`,
+      start_url: `/`,
+      background_color: `#000a14`,
+      theme_color: `#000a14`,
+      display: `minimal-ui`,
+      icon: `src/assets/icon.svg`,
+    },
+  },
+]
+
 const getAllPosts = `
 {
   allAuthorsJson {
@@ -45,6 +102,19 @@ const queries = [
   },
 ]
 
+const configAlgolia = {
+  resolve: `gatsby-plugin-algolia`,
+  options: {
+    appId: process.env.GATSBY_ALGOLIA_APP_ID,
+    apiKey: process.env.GATSBY_ALGOLIA_ADMIN_API_KEY,
+    indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME_POSTS, // for all queries
+    queries,
+    chunkSize: 10000, // default: 1000
+  },
+}
+
+process.env.GATSBY_ALGOLIA_RUN && arrPlugins.push(configAlgolia)
+
 module.exports = {
   pathPrefix: `/`,
   siteMetadata: {
@@ -59,70 +129,5 @@ module.exports = {
     twitter: `edicsonabel_`,
     youtube: `EdicsonAbel`,
   },
-  plugins: [
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sass`,
-    'gatsby-plugin-root-import',
-    `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
-    `gatsby-transformer-json`,
-    {
-      resolve: `gatsby-plugin-algolia`,
-      options: {
-        appId: process.env.GATSBY_ALGOLIA_APP_ID,
-        apiKey: process.env.GATSBY_ALGOLIA_ADMIN_API_KEY,
-        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME_POSTS, // for all queries
-        queries,
-        chunkSize: 10000, // default: 1000
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/assets/images`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `posts`,
-        path: `${__dirname}/src/posts`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `data`,
-        path: `${__dirname}/src/data`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        extensions: [`.md`, `.mdx`],
-        gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 1200,
-            },
-          },
-        ],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `⚡ Edicson Abel`,
-        short_name: `⚡EA`,
-        start_url: `/`,
-        background_color: `#000a14`,
-        theme_color: `#000a14`,
-        display: `minimal-ui`,
-        icon: `src/assets/icon.svg`,
-      },
-    },
-  ],
+  plugins: arrPlugins
 }
