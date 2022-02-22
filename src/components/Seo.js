@@ -55,6 +55,12 @@ const Seo = ({
         lang,
       }}
       title={metaTitle}
+      link={[
+        {
+          rel: `image_src`,
+          href: metaImage,
+        }
+      ]}
       meta={[
         {
           name: `description`,
