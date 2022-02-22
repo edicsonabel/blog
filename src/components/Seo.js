@@ -59,7 +59,7 @@ const Seo = ({
         {
           rel: `image_src`,
           href: metaImage,
-        }
+        },
       ]}
       meta={[
         {
