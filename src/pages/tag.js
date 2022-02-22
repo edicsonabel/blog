@@ -8,6 +8,7 @@ const TagsPage = () => (
   <>
     <Seo title="Tags" />
     <PageLayout>
+      {/* TODO: Presentar las etiquetas del blog y busqueda por :id */}
       <h1>Tags</h1>
     </PageLayout>
   </>

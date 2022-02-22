@@ -8,6 +8,7 @@ const PortfolioPage = () => (
   <>
     <Seo title="Portafolio" type="page" />
     <PageLayout active="portfolio">
+      {/* TODO: Colocar los proyectos realizados */}
       <h1>Portafolio</h1>
     </PageLayout>
   </>

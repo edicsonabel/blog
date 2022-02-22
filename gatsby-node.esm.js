@@ -57,4 +57,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       context: { id: node.id, author },
     })
   })
+
+  // TODO: Crear páginas de autores
 }

@@ -8,6 +8,7 @@ const ContactPage = () => (
   <>
     <Seo title="Sobre mí" type="page" />
     <PageLayout active="me">
+      {/* TODO: Realizar página de presentación */}
       <h1>Sobre mí</h1>
     </PageLayout>
   </>
