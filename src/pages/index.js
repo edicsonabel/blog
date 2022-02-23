@@ -77,7 +77,7 @@ const IndexPage = () => {
                     </h1>
                     <p className="home__main__text-wrapper__description">
                       <span className="d-block bold">
-                        Full Stack Developer{' '}
+                        Web Developer{' '}
                       </span>
                       <span className="body-2">
                         Te ayudaré en tu camino como desarrollador(a){' '}
