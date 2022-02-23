@@ -113,7 +113,18 @@ const configAlgolia = {
   },
 }
 
-process.env.GATSBY_ALGOLIA_RUN && arrPlugins.push(configAlgolia)
+const configRobots = {
+  resolve: 'gatsby-plugin-robots-txt',
+  options: {
+    policy: [{userAgent: '*', allow: '/', disallow: ['/search']}],
+    sitemap: null,
+  }
+}
+
+if(process.env.GATSBY_BUILD_SERVER){
+  arrPlugins.push(configAlgolia) 
+  arrPlugins.push(configRobots)
+}
 
 module.exports = {
   pathPrefix: `/`,
@@ -121,6 +132,7 @@ module.exports = {
     title: `Edicson Abel`,
     description: `Aprende a programar con JavaScript, React, Node, Linux y más. Te ayudaré en tu camino de desarrollador Front-End y Back-End, así dominaremos el mundo`,
     author: `@edicsonabel_`,
+    siteUrl: `https://edicsonabel.com`,
     facebook: `EdicsonAbel`,
     github: `edicsonabel`,
     gitlab: `edicsonabel`,
