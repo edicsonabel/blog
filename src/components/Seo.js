@@ -14,12 +14,12 @@ const Seo = ({
   title,
   type,
 }) => {
-  const [localhost, setLocalhost] = useState('')
+  // const [localhost, setLocalhost] = useState('')
   const [NOW_URL, setURL] = useState('')
   const updateURL = nowURL()
 
   useEffect(() => {
-    setLocalhost(nowURL({ pathname: false }))
+    // setLocalhost(nowURL({ pathname: false }))
     setURL(nowURL())
   }, [updateURL])
 
@@ -37,6 +37,7 @@ const Seo = ({
             title
             description
             twitter
+            siteUrl
           }
         }
       }
@@ -46,8 +47,9 @@ const Seo = ({
   const metaDescription = description || site.siteMetadata.description
   const titleSite = site.siteMetadata?.title
   const metaTitle = type === 'page' ? `${title} | ${titleSite}` : `${title}`
-  const twitterAuthor = author ? `@${author}` : `@${site.siteMetadata?.twitter}`
-  const metaImage = `${localhost}${image || imageSharp.original.src}`
+  const metaType = type === 'page' ? 'website' : 'article'
+  const twitterAuthor = author ? `${author}` : `${site.siteMetadata?.twitter}`
+  const metaImage = `${site.siteMetadata?.siteUrl}${image || imageSharp.original.src}`
 
   return (
     <Helmet
@@ -63,14 +65,12 @@ const Seo = ({
       ]}
       meta={[
         {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
+          name: `title`,
           property: `og:title`,
           content: metaTitle,
         },
         {
+          name: `description`,
           property: `og:description`,
           content: metaDescription,
         },
@@ -79,6 +79,7 @@ const Seo = ({
           content: NOW_URL,
         },
         {
+          name: `image`,
           property: `og:image`,
           content: metaImage,
         },
@@ -87,16 +88,8 @@ const Seo = ({
           content: metaTitle,
         },
         {
-          property: `og:image:width`,
-          content: '1200',
-        },
-        {
-          property: `og:image:height`,
-          content: '630',
-        },
-        {
           property: `og:type`,
-          content: `website`,
+          content: metaType,
         },
         {
           name: `twitter:card`,
@@ -108,7 +101,7 @@ const Seo = ({
         },
         {
           name: `twitter:creator`,
-          content: twitterAuthor,
+          content: `@${twitterAuthor}`,
         },
         {
           name: `twitter:title`,
