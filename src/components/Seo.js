@@ -83,6 +83,18 @@ const Seo = ({
           content: metaImage,
         },
         {
+          property: `og:image:alt`,
+          content: metaTitle,
+        },
+        {
+          property: `og:image:width`,
+          content: '1200',
+        },
+        {
+          property: `og:image:height`,
+          content: '630',
+        },
+        {
           property: `og:type`,
           content: `website`,
         },
