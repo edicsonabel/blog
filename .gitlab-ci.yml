@@ -21,7 +21,7 @@ yarn:install:
     # Install via yarn with frozen-lockfile to allow reproducible dependencies and check-files option to check if the node_modules cache is valid.
     - yarn install --frozen-lockfile --check-files --non-interactive
   only:
-    - production
+    - main
 
 gatsby:clean:
   stage: Clean Gatsby cache
@@ -30,7 +30,7 @@ gatsby:clean:
   script:
     - ./node_modules/.bin/gatsby clean
   only:
-    - production
+    - main
 
 pages:
   stage: Publish Gastby
@@ -43,4 +43,4 @@ pages:
     paths:
       - public
   only:
-    - production
+    - main
