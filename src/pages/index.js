@@ -76,9 +76,7 @@ const IndexPage = () => {
                       Edicson Abel
                     </h1>
                     <p className="home__main__text-wrapper__description">
-                      <span className="d-block bold">
-                        Web Developer{' '}
-                      </span>
+                      <span className="d-block bold">Web Developer </span>
                       <span className="body-2">
                         Te ayudaré en tu camino como desarrollador(a){' '}
                         <span className="d-inline-block">Front-End</span> y{' '}

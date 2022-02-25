@@ -49,7 +49,9 @@ const Seo = ({
   const metaTitle = type === 'page' ? `${title} | ${titleSite}` : `${title}`
   const metaType = type === 'page' ? 'website' : 'article'
   const twitterAuthor = author ? `${author}` : `${site.siteMetadata?.twitter}`
-  const metaImage = `${site.siteMetadata?.siteUrl}${image || imageSharp.original.src}`
+  const metaImage = `${site.siteMetadata?.siteUrl}${
+    image || imageSharp.original.src
+  }`
 
   return (
     <Helmet

@@ -116,13 +116,13 @@ const configAlgolia = {
 const configRobots = {
   resolve: 'gatsby-plugin-robots-txt',
   options: {
-    policy: [{userAgent: '*', allow: '/', disallow: ['/search']}],
+    policy: [{ userAgent: '*', allow: '/', disallow: ['/search'] }],
     sitemap: null,
-  }
+  },
 }
 
-if(process.env.GATSBY_BUILD_SERVER){
-  arrPlugins.push(configAlgolia) 
+if (process.env.GATSBY_BUILD_SERVER) {
+  arrPlugins.push(configAlgolia)
   arrPlugins.push(configRobots)
 }
 
