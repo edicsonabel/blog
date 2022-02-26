@@ -1,8 +1,6 @@
 image: node:lts
 
 stages:
-  - Install node packages
-  - Clean Gatsby cache
   - Publish Gastby
 
 # These folders are cached between builds
@@ -15,32 +13,15 @@ cache:
     - .cache/
     - public/
 
-yarn:install:
-  stage: Install node packages
+production:
+  stage: Publish Gastby
   script:
     # Install via yarn with frozen-lockfile to allow reproducible dependencies and check-files option to check if the node_modules cache is valid.
     - yarn install --frozen-lockfile --check-files --non-interactive
-  only:
-    - main
-
-gatsby:clean:
-  stage: Clean Gatsby cache
-  needs:
-    - yarn:install
-  script:
     - ./node_modules/.bin/gatsby clean
+    - ./node_modules/.bin/gatsby build --prefix-paths
   only:
     - main
-
-pages:
-  stage: Publish Gastby
-  needs: 
-    - yarn:install
-    - gatsby:clean
-  script:
-    - ./node_modules/.bin/gatsby build --prefix-paths
   artifacts:
     paths:
       - public
-  only:
-    - main
