@@ -1,7 +1,7 @@
 ---
 title: 'Cómo eliminar protección GPT de disco duro'
 date: 2020-01-03 07:00:00
-image: '../../assets/images/como-eliminar-proteccion-gpt-de-disco-duro.webp'
+image: '../../assets/images/como-eliminar-proteccion-gpt-de-disco-duro.png'
 author: 'edicsonabel'
 excerpt: 'No se puede instalar Windows en este disco. el disco seleccionado tiene el estilo de partición GPT. Debemos solucionarlo como se muestra aquí. Los GPT son tablas de partición GUID que tienen algunos discos duros, y esto nos bloquean la instalación de sistemas operativos (OS) en dicho disco.'
 tags:
