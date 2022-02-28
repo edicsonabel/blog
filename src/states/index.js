@@ -8,9 +8,6 @@ import ModeButton from 'components/ModeButton'
 import Navbar from 'components/Navbar'
 import Footer from 'components/Footer'
 
-/*    STYLES    */
-import 'styles/index.sass'
-
 const States = ({ element }) => {
   return (
     <>
