@@ -37,7 +37,7 @@ const Navbar = () => {
         >
           <Link to="/portfolio/" className="navbar__link flex-center">
             <i className="navbar__icon i-portfolio" />
-            <span className="navbar__text">Portfolio</span>
+            <span className="navbar__text">Portafolio</span>
           </Link>
         </li>
         <li
