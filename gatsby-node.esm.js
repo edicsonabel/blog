@@ -5,6 +5,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
   const postTemplate = path.resolve(`./src/templates/posts.js`)
   const tagTemplate = path.resolve(`./src/templates/tags.js`)
+  const authorTemplate = path.resolve(`./src/templates/authors.js`)
   const result = await graphql(`
     query {
       allMdx {
@@ -24,6 +25,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         nodes {
           id
           user
+          name
         }
       }
 
@@ -70,6 +72,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         site: title,
         component: tagTemplate,
         context: { tag: tagName },
+      })
+    })
+  }
+
+  // Create authors pages
+  if (authors.length) {
+    authors.forEach(author => {
+      const { user, name } = author
+      createPage({
+        path: `/author/${user}/`,
+        site: title,
+        component: authorTemplate,
+        context: { author: user, name },
       })
     })
   }
