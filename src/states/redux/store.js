@@ -2,7 +2,7 @@ import { createStore, combineReducers } from 'redux'
 import pageActive from './reducers/pageActive'
 
 const reducers = combineReducers({
-  pageActive,
+  pageActive
 })
 
 const store = createStore(reducers)

@@ -5,7 +5,7 @@ const getMode = () => {
   const prefersDarkFromMQ = window.matchMedia(
     '(prefers-color-scheme: dark)'
   ).matches
-  const persistedPreference = localStorage.getItem('DarkMode')
+  const persistedPreference = window.localStorage.getItem('DarkMode')
   const hasUsedToggle = typeof persistedPreference === 'string'
 
   if (hasUsedToggle) {
@@ -15,13 +15,13 @@ const getMode = () => {
   }
 
   colorMode = colorMode ? 'dark' : 'light'
-  let root = document.documentElement
-  root.style.setProperty(`--dark-mode`, colorMode)
+  const root = document.documentElement
+  root.style.setProperty('--dark-mode', colorMode)
 }
 
 const MagicScriptTag = () => {
   const boundFn = String(getMode)
-  let calledFunction = `(${boundFn})()`
+  const calledFunction = `(${boundFn})()`
 
   // eslint-disable-next-line react/no-danger
   return <script dangerouslySetInnerHTML={{ __html: calledFunction }} />

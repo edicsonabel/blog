@@ -6,8 +6,8 @@ import Seo from 'components/Seo'
 
 const ContactPage = () => (
   <>
-    <Seo title="Sobre mí" type="page" />
-    <PageLayout active="me">
+    <Seo title='Sobre mí' type='page' />
+    <PageLayout active='me'>
       {/* TODO: Realizar página de presentación */}
       <h1>Sobre mí</h1>
     </PageLayout>

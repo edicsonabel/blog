@@ -5,12 +5,12 @@ import { Highlight } from 'react-instantsearch-dom'
 const SearchCard = ({ hit }) => {
   return (
     <>
-      <Link className="search__card" to={`../${hit.objectID}`}>
-        <h2 className="search__card__title">
-          <Highlight attribute="title" hit={hit} />
+      <Link className='search__card' to={`../${hit.objectID}`}>
+        <h2 className='search__card__title'>
+          <Highlight attribute='title' hit={hit} />
         </h2>
-        <p className="search__card__description">
-          <Highlight attribute="excerpt" hit={hit} />
+        <p className='search__card__description'>
+          <Highlight attribute='excerpt' hit={hit} />
         </p>
       </Link>
     </>

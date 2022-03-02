@@ -15,7 +15,7 @@ const Header = ({
   authorImg,
   authorTwitter,
   date,
-  readTime,
+  readTime
 }) => {
   const [NOW_URL, setURL] = useState('')
   const updateURL = nowURL()
@@ -26,67 +26,67 @@ const Header = ({
 
   return (
     <header>
-      <GatsbyImage className="header__image" image={image} alt={title} />
-      <div className="header__box">
-        <h1 className="header__title title-1 text-center">{title}</h1>
-        <div className="tag__box">
+      <GatsbyImage className='header__image' image={image} alt={title} />
+      <div className='header__box'>
+        <h1 className='header__title title-1 text-center'>{title}</h1>
+        <div className='tag__box'>
           {tags.map(tag => (
             <Tag key={tag} name={tag} />
           ))}
         </div>
-        <div className="header__footer">
-          <div className="header__info">
+        <div className='header__footer'>
+          <div className='header__info'>
             <Link
               to={`/author/${authorUser}/`}
-              className="header__info__box"
+              className='header__info__box'
               alt={authorName}
             >
               <GatsbyImage
-                className="header__info__image"
+                className='header__info__image'
                 image={authorImg}
                 alt={authorName}
               />
-              <span className="header__info__author">{authorName}</span>
+              <span className='header__info__author'>{authorName}</span>
             </Link>
-            <span className="header__info__date">{dateFormat(date)}</span>
-            <span className="header__info__reading-time">{`${readTime} min read`}</span>
+            <span className='header__info__date'>{dateFormat(date)}</span>
+            <span className='header__info__reading-time'>{`${readTime} min read`}</span>
           </div>
-          <div className="header__action">
+          <div className='header__action'>
             <a
               href={`https://twitter.com/intent/tweet?text=${title} by %40${authorTwitter} &url=${NOW_URL}`}
-              className="header__action__link"
-              target="_blank"
-              rel="nofollow noopener noreferrer"
-              aria-label="Compartir en Twitter"
+              className='header__action__link'
+              target='_blank'
+              rel='nofollow noopener noreferrer'
+              aria-label='Compartir en Twitter'
             >
-              <i className="i-twitter"></i>
+              <i className='i-twitter' />
             </a>
             <a
               href={`https://facebook.com/sharer/sharer.php?u=${NOW_URL}`}
-              className="header__action__link"
-              target="_blank"
-              rel="nofollow noopener noreferrer"
-              aria-label="Compartir en Facebook"
+              className='header__action__link'
+              target='_blank'
+              rel='nofollow noopener noreferrer'
+              aria-label='Compartir en Facebook'
             >
-              <i className="i-facebook"></i>
+              <i className='i-facebook' />
             </a>
             <a
               href={`https://linkedin.com/shareArticle?mini=true&url=${NOW_URL}`}
-              className="header__action__link"
-              target="_blank"
-              rel="nofollow noopener noreferrer"
-              aria-label="Compartir en LinkedIn"
+              className='header__action__link'
+              target='_blank'
+              rel='nofollow noopener noreferrer'
+              aria-label='Compartir en LinkedIn'
             >
-              <i className="i-linkedin"></i>
+              <i className='i-linkedin' />
             </a>
             <button
               onClick={() => navigator.clipboard.writeText(NOW_URL)}
-              className="header__action__link"
-              target="_blank"
-              rel="nofollow noopener noreferrer"
-              aria-label="Copiar enlace"
+              className='header__action__link'
+              target='_blank'
+              rel='nofollow noopener noreferrer'
+              aria-label='Copiar enlace'
             >
-              <i className="i-link"></i>
+              <i className='i-link' />
             </button>
           </div>
         </div>

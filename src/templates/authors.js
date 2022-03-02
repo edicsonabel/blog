@@ -57,13 +57,13 @@ const AuthorLayout = ({ data, pageContext }) => {
     <>
       <Helmet
         bodyAttributes={{
-          class: BodyClass,
+          class: BodyClass
         }}
       />
-      <Seo title={`Autor ${pageContext.name}`} type="page" />
-      <main className="container">
+      <Seo title={`Autor ${pageContext.name}`} type='page' />
+      <main className='container'>
         <h1>{`Autor "${pageContext.name}"`}</h1>
-        <section className="card__grid">
+        <section className='card__grid'>
           {data.allMdx.edges.map(({ node }) => (
             <Card
               key={node.id}
@@ -75,7 +75,7 @@ const AuthorLayout = ({ data, pageContext }) => {
                 author: authors.filter(
                   author => author.user === node.frontmatter.author
                 )[0],
-                excerpt: node.excerpt,
+                excerpt: node.excerpt
               }}
             />
           ))}

@@ -19,7 +19,7 @@ const SearchPage = () => {
 
   const searchClient = {
     ...algoliaClient,
-    search(requests) {
+    search (requests) {
       setShowResults(requests[0].params.query)
 
       if (firstLoad) {
@@ -28,42 +28,44 @@ const SearchPage = () => {
       }
 
       return algoliaClient.search(requests)
-    },
+    }
   }
 
   return (
     <>
-      <Seo title="Buscar" type="page" />
-      <PageLayout active="search">
+      <Seo title='Buscar' type='page' />
+      <PageLayout active='search'>
         <InstantSearch
           searchClient={searchClient}
           indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME_POSTS}
         >
           <SearchBox
             autoFocus
-            className="search__box"
+            className='search__box'
             translations={{
               submitTitle: 'Buscar',
               resetTitle: 'Limpiar',
-              placeholder: 'Qué estás buscando? 🤔',
+              placeholder: 'Qué estás buscando? 🤔'
             }}
           />
           {showResults ? <Hits hitComponent={SearchCard} /> : null}
-          {showResults ? (
-            <a
-              className="search__sponsor"
-              href="https://www.algolia.com/docsearch"
-              rel="nofollow noopener noreferrer"
-              target="_blank"
-            >
-              Búsqueda por{' '}
-              <img
-                className="search__sponsor__img"
-                src={svgAlgolia}
-                alt="Algolia Logo"
-              />
-            </a>
-          ) : null}
+          {showResults
+            ? (
+              <a
+                className='search__sponsor'
+                href='https://www.algolia.com/docsearch'
+                rel='nofollow noopener noreferrer'
+                target='_blank'
+              >
+                Búsqueda por{' '}
+                <img
+                  className='search__sponsor__img'
+                  src={svgAlgolia}
+                  alt='Algolia Logo'
+                />
+              </a>
+              )
+            : null}
         </InstantSearch>
       </PageLayout>
     </>

@@ -56,7 +56,7 @@ const PostLayout = ({ data }) => {
   const components = {
     Link,
     pre: props => <div {...props} />,
-    code: CodeBlock,
+    code: CodeBlock
   }
 
   useEffect(() => {
@@ -73,12 +73,12 @@ const PostLayout = ({ data }) => {
     <>
       <Helmet
         bodyAttributes={{
-          class: BodyClass,
+          class: BodyClass
         }}
       />
       <Seo
         title={title}
-        description={excerpt ? excerpt : mdxExcerpt}
+        description={excerpt || mdxExcerpt}
         author={author.twitter}
         image={image.publicURL}
       />
@@ -93,7 +93,7 @@ const PostLayout = ({ data }) => {
         date={date}
         readTime={readTime}
       />
-      <main className="container main-post">
+      <main className='container main-post'>
         <MDXProvider components={components}>
           <MDXRenderer>{body}</MDXRenderer>
         </MDXProvider>

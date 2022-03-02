@@ -6,8 +6,8 @@ import Seo from 'components/Seo'
 
 const PortfolioPage = () => (
   <>
-    <Seo title="Portafolio" type="page" />
-    <PageLayout active="portfolio">
+    <Seo title='Portafolio' type='page' />
+    <PageLayout active='portfolio'>
       {/* TODO: Colocar los proyectos realizados */}
       <h1>Portafolio</h1>
     </PageLayout>

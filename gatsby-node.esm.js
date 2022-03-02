@@ -3,9 +3,9 @@ import path from 'path'
 exports.createPages = async ({ graphql, actions, reporter }) => {
   // Destructure the createPage function from the actions object
   const { createPage } = actions
-  const postTemplate = path.resolve(`./src/templates/posts.js`)
-  const tagTemplate = path.resolve(`./src/templates/tags.js`)
-  const authorTemplate = path.resolve(`./src/templates/authors.js`)
+  const postTemplate = path.resolve('./src/templates/posts.js')
+  const tagTemplate = path.resolve('./src/templates/tags.js')
+  const authorTemplate = path.resolve('./src/templates/authors.js')
   const result = await graphql(`
     query {
       allMdx {
@@ -60,7 +60,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       path: node.slug,
       site: title,
       component: postTemplate,
-      context: { id: node.id, author },
+      context: { id: node.id, author }
     })
   })
 
@@ -71,7 +71,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         path: `/tag/${tagName}/`,
         site: title,
         component: tagTemplate,
-        context: { tag: tagName },
+        context: { tag: tagName }
       })
     })
   }
@@ -84,7 +84,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         path: `/author/${user}/`,
         site: title,
         component: authorTemplate,
-        context: { author: user, name },
+        context: { author: user, name }
       })
     })
   }

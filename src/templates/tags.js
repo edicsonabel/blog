@@ -57,13 +57,13 @@ const TagLayout = ({ data, pageContext }) => {
     <>
       <Helmet
         bodyAttributes={{
-          class: BodyClass,
+          class: BodyClass
         }}
       />
-      <Seo title={`Etiqueta ${pageContext.tag}`} type="page" />
-      <main className="container">
+      <Seo title={`Etiqueta ${pageContext.tag}`} type='page' />
+      <main className='container'>
         <h1>{`Etiqueta "${pageContext.tag}"`}</h1>
-        <section className="card__grid">
+        <section className='card__grid'>
           {data.allMdx.edges.map(({ node }) => (
             <Card
               key={node.id}
@@ -75,7 +75,7 @@ const TagLayout = ({ data, pageContext }) => {
                 author: authors.filter(
                   author => author.user === node.frontmatter.author
                 )[0],
-                excerpt: node.excerpt,
+                excerpt: node.excerpt
               }}
             />
           ))}

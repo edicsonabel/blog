@@ -12,7 +12,7 @@ const Seo = ({
   author = '',
   image = '',
   title,
-  type,
+  type
 }) => {
   // const [localhost, setLocalhost] = useState('')
   const [NOW_URL, setURL] = useState('')
@@ -56,67 +56,67 @@ const Seo = ({
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        lang
       }}
       title={metaTitle}
       link={[
         {
-          rel: `image_src`,
-          href: metaImage,
-        },
+          rel: 'image_src',
+          href: metaImage
+        }
       ]}
       meta={[
         {
-          name: `title`,
-          property: `og:title`,
-          content: metaTitle,
+          name: 'title',
+          property: 'og:title',
+          content: metaTitle
         },
         {
-          name: `description`,
-          property: `og:description`,
-          content: metaDescription,
+          name: 'description',
+          property: 'og:description',
+          content: metaDescription
         },
         {
-          property: `og:url`,
-          content: NOW_URL,
+          property: 'og:url',
+          content: NOW_URL
         },
         {
-          name: `image`,
-          property: `og:image`,
-          content: metaImage,
+          name: 'image',
+          property: 'og:image',
+          content: metaImage
         },
         {
-          property: `og:image:alt`,
-          content: metaTitle,
+          property: 'og:image:alt',
+          content: metaTitle
         },
         {
-          property: `og:type`,
-          content: metaType,
+          property: 'og:type',
+          content: metaType
         },
         {
-          name: `twitter:card`,
-          content: `summary_large_image`,
+          name: 'twitter:card',
+          content: 'summary_large_image'
         },
         {
-          name: `twitter:site`,
-          content: `@${site.siteMetadata?.twitter}`,
+          name: 'twitter:site',
+          content: `@${site.siteMetadata?.twitter}`
         },
         {
-          name: `twitter:creator`,
-          content: `@${twitterAuthor}`,
+          name: 'twitter:creator',
+          content: `@${twitterAuthor}`
         },
         {
-          name: `twitter:title`,
-          content: metaTitle,
+          name: 'twitter:title',
+          content: metaTitle
         },
         {
-          name: `twitter:description`,
-          content: metaDescription,
+          name: 'twitter:description',
+          content: metaDescription
         },
         {
-          name: `twitter:image`,
-          content: metaImage,
-        },
+          name: 'twitter:image',
+          content: metaImage
+        }
       ].concat(meta)}
     />
   )

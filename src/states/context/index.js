@@ -18,9 +18,9 @@ export const ContextProvider = ({ children }) => {
   const [BodyClass, setBodyClass] = useState('')
 
   useEffect(() => {
-    let body_class = []
-    body_class.push(DarkMode ? 'dark' : 'light')
-    setBodyClass(body_class.join(' '))
+    const bodyclass = []
+    bodyclass.push(DarkMode ? 'dark' : 'light')
+    setBodyClass(bodyclass.join(' '))
   }, [DarkMode])
 
   return (
@@ -30,7 +30,7 @@ export const ContextProvider = ({ children }) => {
         setPageActive,
         DarkMode,
         setDarkMode,
-        BodyClass,
+        BodyClass
       }}
     >
       {children}

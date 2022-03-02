@@ -45,15 +45,15 @@ const BlogPage = () => {
   `
   return (
     <>
-      <Seo title="Blog" type="page" />
-      <PageLayout active="blog">
+      <Seo title='Blog' type='page' />
+      <PageLayout active='blog'>
         <h1>Blog</h1>
         <StaticQuery
           query={postsQuery}
           render={data => {
             const authors = data.allAuthorsJson.nodes
             return (
-              <section className="card__grid">
+              <section className='card__grid'>
                 {data.allMdx.edges.map(({ node }) => (
                   <Card
                     key={node.id}
@@ -66,7 +66,7 @@ const BlogPage = () => {
                       author: authors.filter(
                         author => author.user === node.frontmatter.author
                       )[0],
-                      excerpt: node.excerpt,
+                      excerpt: node.excerpt
                     }}
                   />
                 ))}

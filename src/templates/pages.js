@@ -15,10 +15,10 @@ const PageLayout = ({ active, children }) => {
     <>
       <Helmet
         bodyAttributes={{
-          class: BodyClass,
+          class: BodyClass
         }}
       />
-      <main className={`container`}>{children}</main>
+      <main className='container'>{children}</main>
     </>
   )
 }
