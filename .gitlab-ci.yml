@@ -39,6 +39,7 @@ pages:
     - gatsby:clean
   script:
     - ./node_modules/.bin/gatsby build --prefix-paths
+    - find public/ -type f -print0 | xargs -0 sed -i 's/async=""/defer/g'
   artifacts:
     paths:
       - public
