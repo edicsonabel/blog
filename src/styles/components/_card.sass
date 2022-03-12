@@ -15,12 +15,10 @@
     grid-gap: 2rem 1rem
     grid-template-columns: 1fr
     @media ( min-width: $md )
-      grid-template-columns: 1fr 1fr  
+      grid-template-columns: 1fr 1fr
     @media ( min-width: $lg )
       grid-gap: 2rem
-      grid-template-columns: 1fr 1fr 1fr 
-  $bg-color-light: var(--blue-dark)
-  $bg-color-dark: var(--black)
+      grid-template-columns: 1fr 1fr 1fr
   &__title
     padding: 0
     color: var(--secondary)
@@ -37,10 +35,12 @@
     display: flex
     grid-gap: .5em
     align-items: center
-    color: var(--secondary)
     &__thumb
       width: 2.5rem
       border-radius: 50%
+    &__name
+      color: var(--secondary)
+
   &__image
     width: auto
     height: 60vh
@@ -49,13 +49,11 @@
     bottom: 0
     left: 0
     right: 0
-    z-index: 1      
-    border-radius: 1.5rem    
+    z-index: 1
+    border-radius: 1.5rem
     transform: translateY(100%)
     transition: .2s ease-in-out
-    background-color: $bg-color-light
-    body.dark &
-      background-color: $bg-color-dark
+    background-color: var(--blue-dark-to-black)
   &:hover &__overlay
     transform: translateY(0)
   &__header
@@ -66,9 +64,7 @@
     border-radius: 1.5rem 0 0 0
     transform: translateY(-100%)
     transition: .2s ease-in-out
-    background-color: $bg-color-light
-    body.dark &
-      background-color: $bg-color-dark
+    background-color: var(--blue-dark-to-black)
     &::before
       content: ""
       position: absolute
@@ -78,12 +74,10 @@
       height: 3rem
       width: 1.5rem
       border-bottom-right-radius: 1.5rem
-      box-shadow: 0 1.5rem 0 0 $bg-color-light
-      body.dark &
-        box-shadow: 0 1.5rem 0 0 $bg-color-dark
+      box-shadow: 0 1.5rem 0 0 var(--blue-dark-to-black)
   &:hover &__header
     transform: translateY(0)
-  &__description 
+  &__description
     padding: 0 1.5rem 1.5rem
     color: var(--light)
     overflow: hidden

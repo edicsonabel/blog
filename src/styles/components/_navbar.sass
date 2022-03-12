@@ -15,7 +15,7 @@
     overflow: hidden
     box-shadow: 0 .25rem .25rem rgba(0, 0, 0, 0.25)
     background-color: var(--blue-dark)
-    body.dark &  
+    body.dark &
       box-shadow: 0 .25rem .25rem rgba(255, 255, 255, 0.05)
       background-color: var(--black)
   &__link
@@ -24,8 +24,6 @@
     flex-direction: column
     transition: all 0.5s
     color: var(--secondary)
-    body.dark &
-      color: var(--secondary)
   &__icon
     font-size: 1.25rem
   &__text
@@ -34,8 +32,6 @@
     line-height: initial
   &__icon, &__text
     color: var(--secondary)
-    body.dark &
-      color: var(--secondary)
   &__item
     height: 100%
     flex-grow: 1
@@ -44,8 +40,6 @@
     overflow: hidden
     &--active *
       color: var(--primary)
-      body.dark &
-        color: var(--primary)
     &--portfolio
       order: 1
     &--home

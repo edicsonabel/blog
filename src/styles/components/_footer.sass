@@ -6,7 +6,6 @@
   box-sizing: border-box
   overflow: hidden
   color: var(--light)
-  $bg-color-light: --black
   &__wave
     width: 106%
     max-width: 106%
@@ -18,11 +17,11 @@
     background-position: center center
     background-size: 100% 100%
     path
-      fill: var($bg-color-light)
+      fill: var(--black)
   section
-    padding:.5rem 1rem 1rem
+    padding: .5rem 1rem 1rem
     text-align: center
-    background-color: var($bg-color-light)
+    background-color: var(--black)
     &:last-child
       padding-bottom: 8rem
   &__social
@@ -37,7 +36,7 @@
       width: 2.5rem
       height: 2.5rem
       border-radius: 50%
-      transition:.3s ease all
+      transition: .3s ease all
       &:hover
         background-color: var(--gray-dark)
       span,i
@@ -45,6 +44,5 @@
   &__copyright
     span
       display: inline-block
-    body.light & a
+    & a
       color: var(--secondary)
-  

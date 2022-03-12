@@ -4,21 +4,14 @@
   margin-right: .5rem
   padding: .125rem .25rem
   border-radius: .5rem .5rem .5rem 0px
-  background-color: var(--blue-dark)
-  body.light &
-    color: var(--secondary)
-  body.dark &
-    background-color: var(--gray-dark)
-    color: var(--light)
+  background-color: var(--blue-dark-to-gray-dark)
+  color: var(--secondary-to-light)
   &:first-child
     margin-left: .5rem
   &__box
     text-align: center
     padding-top: 1rem
     width: 100%
-  body.light .header__box &
-    background-color: var(--blue-dark)
-    color: var(--secondary)
-  body.dark .header__box &
-    background-color: var(--gray-dark)
-    color: var(--light)
+  .header__box &
+    background-color: var(--blue-dark-to-gray-dark)
+    color: var(--secondary-to-light)

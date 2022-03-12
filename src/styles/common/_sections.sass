@@ -29,10 +29,8 @@
       top: -25vw
       left: -25vw
       border-radius: 50%
-      background-color: var(--secondary)
-      body.dark &
-        background-color: var(--light)
-    
+      background-color: var(--secondary-to-light)
+
     @media (min-width: $md)
       flex-direction: row
       align-items: center
@@ -58,13 +56,10 @@
       margin-right: auto
       padding: 1rem 3rem
       border-radius: 3rem
-      body.light &
-        color: var(--secondary)
-        background-color: var(--blue-dark)
-        box-shadow: 0 0.25rem 1rem rgb(0 0 0 / 25%)
+      background-color: var(--blue-dark-to-secondary)
+      color: var(--secondary-to-dark)
+      box-shadow: 0 0.25rem 1rem rgb(0 0 0 / 25%)
       body.dark &
-        color: var(--dark)
-        background-color: var(--secondary)
         box-shadow: 0 0.25rem 1rem rgb(255 255 255 / 10%)
 
     &__cover
@@ -84,22 +79,20 @@
         height: 100%
         transform: rotateZ(60deg)
         border-radius: 30% 60% 40% 40%
-        border: 1px solid var(--blue-dark)
+        border: 1px solid var(--blue-dark-to-primary)
         animation: #{$pattern}-animation-cover 10s linear infinite
-        body.dark &
-          border: 1px solid var(--primary)
         @keyframes #{$pattern}-animation-cover
           0%
             border-radius: 30% 60% 40% 40%
           25%
-            border-radius: 40% 40% 60% 30% 
+            border-radius: 40% 40% 60% 30%
           50%
             border-radius: 60% 30% 40% 40%
           75%
             border-radius: 40% 40% 30% 60%
           100%
             border-radius: 30% 60% 40% 40%
-      
+
       @media (min-width: $md)
         left: initial
         transform: translateX(0)
@@ -177,18 +170,14 @@
       right: 0
       border-radius: 50%
       background-color: var(--black)
-      body.dark &
-        box-shadow: 0 0.25rem 1rem rgb(255 255 255 / 80%)
       animation: #{$pattern}-animation-cover-before 4s linear infinite
+      box-shadow: 0 0.25rem 1rem var(--secondary-to-light)
       @keyframes #{$pattern}-animation-cover-before
         0%
-          // right: 20px
           right: 0
         50%
-          // right: 0
           right: 20px
         100%
-          // right: 20px
           right: 0
 
   &__action
@@ -200,11 +189,8 @@
     margin-right: auto
     padding: 1rem 3rem
     border-radius: 3rem
-    body.light &
-      color: var(--secondary)
-      background-color: var(--blue-dark)
-      box-shadow: 0 0.25rem 1rem rgb(0 0 0 / 25%)
+    color: var(--secondary-to-dark)
+    background-color: var(--blue-dark-to-secondary)
+    box-shadow: 0 0.25rem 1rem rgb(0 0 0 / 25%)
     body.dark &
-      color: var(--dark)
-      background-color: var(--secondary)
       box-shadow: 0 0.25rem 1rem rgb(255 255 255 / 10%)

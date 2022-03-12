@@ -9,9 +9,7 @@
     top: 0
     border-radius: 0 0 1.5rem 1.5rem
   &__title
-    color: var(--blue-dark)
-    body.dark &
-      color: var(--light)
+    color: var(--blue-dark-to-light)
   &__box
     position: relative
     width: calc(100% - 4rem)
@@ -22,10 +20,9 @@
     border-radius: 1.5rem
     padding: 1rem 0
     max-width: $md
-    background-color: var(--light)
+    background-color: var(--light-to-black)
     body.dark &
       box-shadow: 0 .25rem 1rem rgba(255, 255, 255, 0.1)
-      background-color: var(--black)
     & > *
       padding: 0 1rem
       margin: 0
@@ -44,8 +41,6 @@
     flex-wrap: wrap
     justify-content: space-evenly
     align-items: center
-    // body.light &
-    //   color: var(--dark)
     @media ( min-width: $md )
       justify-content: flex-start
     &__box
@@ -62,16 +57,13 @@
         color: var(--light)
     &__box, &__author, &__date, &__reading-time
       @include body-2
-      font-size: .75rem
       line-height: 2.5
       padding: 0 1rem
       @media ( min-width: $md )
         padding: 0 .4rem
     &__author
       padding: 0
-      // font-weight: bold
-      body.light &
-        color: var(--dark)
+      color: var(--dark-to-secondary)
   &__action
     padding-top: 1rem
     display: flex
@@ -90,18 +82,17 @@
       display: flex
       justify-content: center
       align-items: center
-      background: var(--blue-dark)
+      background-color: var(--blue-dark-to-gray-dark)
       cursor: pointer
       transition: box-shadow .3s ease, transform .3s ease
-      &:hover
-          transform: translateY(5%)
-          box-shadow: 0 -.25rem .25rem rgb(0 0 0 / 25%)
-          body.dark &
-            box-shadow: 0 -.25rem .25rem rgb(255 255 255 / 10%)
       &:active
-          border: .05rem solid var(--primary)
+        border: .05rem solid var(--primary)
+      &:hover
+        transform: translateY(5%)
+        box-shadow: 0 -.25rem .25rem rgb(0 0 0 / 25%)
+        body.dark &
+          box-shadow: 0 -.25rem .25rem rgb(255 255 255 / 10%)
       body.dark &
-        background: var(--gray-dark)
         &:active
           border: .1rem solid rgb(255 255 255 / 10%)
       span,i

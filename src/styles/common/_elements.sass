@@ -15,28 +15,16 @@
   min-height: 100vh
 a
   text-decoration: none
-  &, &:visited
-    color: initial
+  color: var(--primary-to-secondary)
 li
   list-style-type: none
 body
-  display: none
   &, & *::before,& *::after
     transition: color .3s ease, background .3s ease
   @include body-1
   min-height: 100vh
-  &.light 
-    display: block
-    color: var(--dark)
-    background-color: var(--light)
-    & a
-      color: var(--primary)
-  &.dark 
-    display: block
-    color: var(--light)
-    background-color: var(--blue-dark)
-    & a
-      color: var(--secondary)
+  color: var(--dark-to-light)
+  background-color: var(--light-to-blue-dark)
 code
   display: inline-block
   padding: 0.2em 0.4em
