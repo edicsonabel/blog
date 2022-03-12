@@ -1,14 +1,14 @@
 // VARIABLES
-\:root
+html
   // Colors
-  --primary: #4ECDC4
-  // --secondary: #FFE100
-  --secondary: #EEF36A
-  --light: #F5F3F5
-  --dark: #242325
-  --blue-dark: #001021
-  --gray-dark: #3C4043
-  --black: #000a14
+  $colors: ( 'primary': '#4ECDC4', 'secondary': '#EEF36A', 'light': '#F5F3F5', 'dark': '#242325', 'blue-dark': '#001021', 'gray-dark': '#3C4043', 'black': '#000a14')
+
+  @each $name1, $value1 in $colors
+    --#{$name1}: #{$value1}
+    @each $name2, $value2 in $colors
+      @if $name1 != $name2
+        --#{$name1}-to-#{$name2}: #{$value1}
+
 // Small devices (landscape phones, 576px and up)
 $sm: 36rem
 
@@ -21,6 +21,6 @@ $lg: 62rem
 // Extra large devices (large desktops, 1200px and up)
 $xl: 75rem
 
-@media (min-width: $md) 
-  \:root
+@media (min-width: $md)
+  html
     font-size: 18px

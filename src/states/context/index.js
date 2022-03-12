@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react'
 
 /*    COMPONENTS & UTILS    */
-import { isBrowser } from 'utils'
+import { isBrowser, toColors } from 'utils'
 
 export const DataContext = createContext()
 
@@ -19,8 +19,19 @@ export const ContextProvider = ({ children }) => {
 
   useEffect(() => {
     const bodyclass = []
-    bodyclass.push(DarkMode ? 'dark' : 'light')
+    const colorMode = DarkMode ? 'dark' : 'light'
+    bodyclass.push(colorMode)
     setBodyClass(bodyclass.join(' '))
+
+    const arrToColors = Object.keys(toColors)
+    const root = document.documentElement
+    root.style.setProperty('--dark-mode', colorMode)
+
+    for (let i = 0; i < Object.keys(toColors).length; i++) {
+      const key = arrToColors[i]
+      const name = `--${key.replaceAll('_', '-')}`
+      root.style.setProperty(name, toColors[key][colorMode])
+    }
   }, [DarkMode])
 
   return (
