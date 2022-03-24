@@ -1,9 +1,12 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useContext } from 'react'
 import rangeParser from 'parse-numeric-range'
 import Highlight, { defaultProps } from 'prism-react-renderer'
-import nightOwl from 'prism-react-renderer/themes/nightOwl'
+import { DataContext } from 'states/context'
+import themeDark from 'prism-react-renderer/themes/nightOwl'
+import themeLight from 'prism-react-renderer/themes/github'
 
 const CodeBlock = ({ children, className, metastring }) => {
+  const { DarkMode } = useContext(DataContext)
   // Crear un cierre que determine si tenemos que resaltar el índice dado
   const calculateLinesToHighlight = meta => {
     const RE = /{([\d,-]+)}/
@@ -16,7 +19,7 @@ const CodeBlock = ({ children, className, metastring }) => {
     }
   }
 
-  const language = className.replace(/language-/, '') || ''
+  const language = className?.replace(/language-/, '') || ''
   const shouldHighlightLine = useMemo(
     () => calculateLinesToHighlight(metastring),
     [metastring]
@@ -27,8 +30,8 @@ const CodeBlock = ({ children, className, metastring }) => {
       {...defaultProps}
       code={children}
       language={language}
-      theme={nightOwl}
-      // theme={undefined}
+      theme={DarkMode ? themeDark : themeLight}
+    // theme={undefined}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre className={className} style={{ ...style }}>
