@@ -38,7 +38,16 @@ const arrPlugins = [
         {
           resolve: 'gatsby-remark-images',
           options: {
-            maxWidth: 1200
+            maxWidth: 1200,
+            linkImagesToOriginal: false,
+            backgroundColor: 'transparent'
+          }
+        },
+        {
+          resolve: 'gatsby-remark-external-links',
+          options: {
+            target: '_blank',
+            rel: 'nofollow noopener noreferrer'
           }
         }
       ]
