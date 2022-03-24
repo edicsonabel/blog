@@ -34,7 +34,7 @@ const BlogPage = () => {
               tags
               image {
                 childImageSharp {
-                  gatsbyImageData(width: 600)
+                  gatsbyImageData(width: 1200)
                 }
               }
             }

@@ -26,7 +26,7 @@ export const postInfo = graphql`
         title
         image {
           childImageSharp {
-            gatsbyImageData(width: 1200)
+            gatsbyImageData(width: 1920)
           }
           publicURL
         }
