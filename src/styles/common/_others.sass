@@ -8,8 +8,6 @@
   justify-content: center
 .text-center
   text-align: center
-.main-post > *
-  margin-top: 1rem
 .yt-video
   height: 0
   width: 100%
@@ -33,30 +31,26 @@
   display: block
 .d-inline-block
   display: inline-block
-// Desktop
-@media (min-width: $md)
-  .main-post
-    max-width: $sm
-@media (min-width: $lg)
-  .main-post
-    max-width: $md
 // Prism
-.highlight-line 
+.highlight-line
   display: inline
-  // overflow-y: visible
-  // width: 100%
-  // padding-right: 1em
-  // padding-left: 0.75em
-  background-color: rgb(53, 59, 69)
-  // border-left: 0.3em solid var(--secondary)
+  background-color: rgba(53, 59, 69, .1)
+  padding-top: .1rem
+  padding-bottom: .1rem
+  body.dark &
+    background-color: rgba(53, 59, 69, 1)
 .prism-code
   padding-top: 1rem
   padding-bottom: 1rem
   border-radius: .75rem
   overflow-x: auto
-  & .token-line
-    font-size: 85%
-    margin-right: 1rem
-    margin-left: 1rem
+  box-shadow: $shadow-light
+  body.dark &
+    box-shadow: $shadow-dark
+  & .token
+    &-line
+      font-size: 85%
+      margin-left: 1rem
+      margin-right: 1rem
   & > .token-line:last-child
     display: none

@@ -1,8 +1,26 @@
 // VARIABLES
-html
-  // Colors
-  $colors: ( 'primary': '#4ECDC4', 'secondary': '#EEF36A', 'light': '#F5F3F5', 'dark': '#242325', 'blue-dark': '#001021', 'gray-dark': '#3C4043', 'black': '#000a14')
 
+// Colors
+$color-primary: #4ECDC4
+$color-secondary: #EEF36A
+$color-light: #F5F3F5
+$color-dark: #242325
+$color-blue-dark: #001021
+$color-gray-dark: #3C4043
+$color-black: #000a14
+$color-orange: #FF5959
+$color-mustard: #FABB51
+
+$colors: ('primary': #{$color-primary}, 'secondary': #{$color-secondary}, 'light': #{$color-light}, 'dark': #{$color-dark}, 'blue-dark': #{$color-blue-dark}, 'gray-dark': #{$color-gray-dark}, 'black': #{$color-black})
+
+// Shadows
+$shadow-light: 0 .25rem 1rem #{$color-black}40
+$shadow-dark: 0 .25rem 1rem #{$color-primary}40
+
+// Transitions
+$transition-value: .3s ease
+
+html
   @each $name1, $value1 in $colors
     --#{$name1}: #{$value1}
     @each $name2, $value2 in $colors

@@ -19,23 +19,59 @@ a
 li
   list-style-type: none
 body
-  &, & *::before,& *::after
-    transition: color .3s ease, background .3s ease
+  // TODOS LOS ELEMENTOS 
+  & *
+    transition: background $transition-value, box-shadow $transition-value
+  // BODY 
+  &, & *::before, & *::after
+    transition: background $transition-value, box-shadow $transition-value, color $transition-value
   @include body-1
+  line-height: 1.5
   min-height: 100vh
   color: var(--dark-to-light)
   background-color: var(--light-to-blue-dark)
 code
   display: inline-block
-  padding: 0.2em 0.4em
+  padding: 0.1rem 0.4rem
   margin: 0
   font-size: 85%
   border-radius: .4rem
   background-color: rgba(110,118,129,.15)
-  color: #FF5959
+  color: $color-orange
   body.dark &
     background-color: rgba(110,118,129,.4)
-    color: #FABB51
+    color: $color-mustard
+blockquote
+  font-size: 1rem
+  font-style: italic
+  padding: 1rem .5rem 1rem 2rem
+  line-height: 1.6
+  position: relative
+  background-color: rgba(0,0,0,0.03)
+  border-left: .25rem solid $color-orange
+  & + p
+    margin-top: 2.5rem !important
+  body.dark &
+    border-left: .25rem solid $color-mustard
+    background-color: rgba(255,255,255,.03)
+  &::before
+    font-family: Arial
+    content: "\201C"
+    font-size: 3rem
+    position: absolute
+    left: 10px
+    top: -10px
+    color: $color-orange
+    body.dark &
+      color: $color-mustard
+  &::after
+    content: ''
+  span
+    display: block
+    color: #333333
+    font-style: normal
+    font-weight: bold
+    margin-top: 1em
 h1,h2,h3,h4,h5,h6
   line-height: 1.15
   padding-top: .67em
