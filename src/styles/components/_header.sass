@@ -34,7 +34,7 @@
     padding-top: 1rem
     margin-left: 2rem
     margin-right: 2rem
-    @media ( min-width: $md )
+    @media ( min-width: $md + 2.5rem )
       flex-direction: row
   &__info
     display: flex
@@ -53,8 +53,15 @@
       aspect-ratio: 1
       margin-right: .4rem
     &__date, &__reading-time
+      i
+        margin-right: .4rem
       body.dark &
         color: var(--light)
+        margin-left: 0
+        margin-right: 0
+      @media ( min-width: $md)
+        margin-left: .4rem
+        margin-right: .4rem
     &__box, &__author, &__date, &__reading-time
       @include body-2
       line-height: 2.5

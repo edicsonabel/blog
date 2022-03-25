@@ -49,7 +49,7 @@ const Header = ({
               <span className='header__info__author'>{authorName}</span>
             </Link>
             <span className='header__info__date'>{dateFormat(date)}</span>
-            <span className='header__info__reading-time'>{`${readTime} min read`}</span>
+            <span className='header__info__reading-time'><i className='i-book-open' />{`${readTime} min read`}</span>
           </div>
           <div className='header__action'>
             <a
