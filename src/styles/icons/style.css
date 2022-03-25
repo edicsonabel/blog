@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'ea';
-  src:  url('fonts/ea.eot?w8n7ck');
-  src:  url('fonts/ea.eot?w8n7ck#iefix') format('embedded-opentype'),
-    url('fonts/ea.ttf?w8n7ck') format('truetype'),
-    url('fonts/ea.woff?w8n7ck') format('woff'),
-    url('fonts/ea.svg?w8n7ck#ea') format('svg');
+  src:  url('fonts/ea.eot?qomzki');
+  src:  url('fonts/ea.eot?qomzki#iefix') format('embedded-opentype'),
+    url('fonts/ea.ttf?qomzki') format('truetype'),
+    url('fonts/ea.woff?qomzki') format('woff'),
+    url('fonts/ea.svg?qomzki#ea') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,57 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.i-book-open:before {
+  content: "\e905";
+}
+.i-tumblr:before {
+  content: "\e914";
+}
+.i-reddit:before {
+  content: "\e915";
+}
+.i-skype:before {
+  content: "\e916";
+}
+.i-paypal:before {
+  content: "\e917";
+}
+.i-angular:before {
+  content: "\e918";
+}
+.i-at:before {
+  content: "\e919";
+}
+.i-css:before {
+  content: "\e91a";
+}
+.i-html:before {
+  content: "\e91b";
+}
+.i-js:before {
+  content: "\e91c";
+}
+.i-mailbox:before {
+  content: "\e91d";
+}
+.i-mail-bulk:before {
+  content: "\e91e";
+}
+.i-nodejs:before {
+  content: "\e91f";
+}
+.i-react:before {
+  content: "\e920";
+}
+.i-vue:before {
+  content: "\e921";
+}
+.i-npm:before {
+  content: "\e922";
+}
+.i-codepen:before {
+  content: "\e923";
+}
 .i-facebook:before {
   content: "\e900";
 }
@@ -78,9 +129,6 @@
 }
 .i-search:before {
   content: "\e904";
-}
-.i-share-alt:before {
-  content: "\e905";
 }
 .i-user:before {
   content: "\e907";
