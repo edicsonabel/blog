@@ -1,9 +1,8 @@
 image: node:lts
 
 stages:
-  - Install node packages
-  - Clean Gatsby cache
-  - Publish Gastby
+  - 📦 Install node packages
+  - 🚀 Website Deploy
 
 # These folders are cached between builds
 # http://docs.gitlab.com/ce/ci/yaml/README.html#cache
@@ -16,27 +15,17 @@ cache:
     - public/
 
 yarn:install:
-  stage: Install node packages
+  stage: 📦 Install node packages
   script:
     # Install via yarn with frozen-lockfile to allow reproducible dependencies and check-files option to check if the node_modules cache is valid.
     - yarn install --frozen-lockfile --check-files --non-interactive
   only:
     - main
 
-gatsby:clean:
-  stage: Clean Gatsby cache
-  needs:
-    - yarn:install
-  script:
-    - ./node_modules/.bin/gatsby clean
-  only:
-    - main
-
-pages:
-  stage: Publish Gastby
+gatsby:build:
+  stage: 🚀 Website Deploy
   needs: 
     - yarn:install
-    - gatsby:clean
   script:
     - ./node_modules/.bin/gatsby build --prefix-paths
     - find public/ -type f -print0 | xargs -0 sed -i 's/async=""/defer/g'
