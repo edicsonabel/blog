@@ -10,10 +10,14 @@ import Card from 'components/Card'
 const IndexPage = () => {
   const postsQuery = graphql`
     query {
-      imageSharp(fixed: { originalName: { eq: "edicson-abel-profile.webp" } }) {
-        gatsbyImageData
+      allFile(filter: {base: {eq: "edicson-abel-profile.webp"}}) {
+        nodes {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
       }
-
+      
       allAuthorsJson {
         nodes {
           name
@@ -61,13 +65,14 @@ const IndexPage = () => {
           query={postsQuery}
           render={data => {
             const authors = data.allAuthorsJson.nodes
+            const image = data.allFile.nodes[0].childImageSharp.gatsbyImageData
             return (
               <>
                 <section className='home__main full-width container'>
                   <figure className='home__main__cover'>
                     <GatsbyImage
                       className='home__main__cover__img'
-                      image={data.imageSharp.gatsbyImageData}
+                      image={image}
                       alt='Edicson Abel'
                     />
                   </figure>

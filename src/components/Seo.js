@@ -23,12 +23,12 @@ const Seo = ({
     setURL(nowURL())
   }, [updateURL])
 
-  const { site, imageSharp } = useStaticQuery(
+  const { site, allFile } = useStaticQuery(
     graphql`
       query {
-        imageSharp(fixed: { originalName: { eq: "og-image.jpg" } }) {
-          original {
-            src
+        allFile(filter: {base: {eq: "og-image.jpg"}}) {
+          nodes {
+            publicURL
           }
         }
 
@@ -50,7 +50,7 @@ const Seo = ({
   const metaType = type === 'page' ? 'website' : 'article'
   const twitterAuthor = author ? `${author}` : `${site.siteMetadata?.twitter}`
   const metaImage = `${site.siteMetadata?.siteUrl}${
-    image || imageSharp.original.src
+    image || allFile.nodes[0].publicURL
   }`
 
   return (
