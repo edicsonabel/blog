@@ -6,12 +6,16 @@ export const nowURL = props => {
   }
 
   let showPathName = true
+  let showHost = true
   if (props?.pathname === false) {
     showPathName = false
   }
+  if (props?.host === false) {
+    showHost = false
+  }
   const { protocol, host, pathname } = window.location
-  let URL = protocol
-  URL += host ? '//' + host : ''
+  let URL = showHost ? protocol : ''
+  URL += host && showHost ? '//' + host : ''
   URL += pathname ? (showPathName ? pathname : '') : ''
   return URL
 }
