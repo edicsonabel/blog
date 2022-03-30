@@ -1,5 +1,5 @@
 /*    LIBRARIES    */
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'gatsby'
 
 /*    COMPONTENTS AND UTILS    */
@@ -7,13 +7,18 @@ import { DataContext } from 'states/context'
 import PageLayout from 'templates/pages'
 import Seo from 'components/Seo'
 import imgAstronaut from 'assets/images/astronaut.png'
-
+import { nowURL } from 'utils'
 const NotFoundPage = () => {
   const { setPageActive } = useContext(DataContext)
+  const [NOW_URL, setURL] = useState(nowURL({ host: false }))
 
   useEffect(() => {
     setPageActive('none')
   }, [setPageActive])
+
+  useEffect(() => {
+    setURL(nowURL({ host: false }))
+  }, [NOW_URL])
 
   return (
     <>
@@ -21,10 +26,8 @@ const NotFoundPage = () => {
       <PageLayout>
         <section className='error-404'>
           <h1 className='error-404__title'>404</h1>
-          {/* <span className="error-404__msg subtitle-1">Houston, tenemos un problema</span> */}
           <span className='error-404__msg subtitle-1'>
-            Hemos buscado hasta en los agujeros negros y no hemos encontrado
-            esta dirección
+            Ehhhh... Houston, tenemos un problema. La dirección <code>{NOW_URL}</code> se fue por un agujero negro
           </span>
           <figure className='error-404__cover'>
             <img
