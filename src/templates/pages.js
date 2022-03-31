@@ -5,7 +5,7 @@ import Helmet from 'react-helmet'
 /*    COMPONTENTS AND UTILS    */
 import { DataContext } from 'states/context'
 
-const PageLayout = ({ active, children }) => {
+const PageLayout = ({ active, children, full }) => {
   const { setPageActive, BodyClass } = useContext(DataContext)
   useEffect(() => {
     setPageActive(active)
@@ -18,7 +18,7 @@ const PageLayout = ({ active, children }) => {
           class: BodyClass
         }}
       />
-      <main className='container'>{children}</main>
+      <main className={full ? 'container-full' : 'container'}>{children}</main>
     </>
   )
 }
