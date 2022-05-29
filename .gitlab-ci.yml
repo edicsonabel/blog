@@ -1,7 +1,6 @@
 image: node:lts
 
 stages:
-  - 📦 Install node packages
   - 🚀 Website Deploy
 
 # These folders are cached between builds
@@ -12,21 +11,12 @@ cache:
     - node_modules/
     # Enables git-lab CI caching. Both .cache and public must be cached, otherwise builds will fail.
     - .cache/
-    - public/
-
-yarn:install:
-  stage: 📦 Install node packages
+    
+yarn:deploy:
+  stage: 🚀 Website Deploy
   script:
     # Install via yarn with frozen-lockfile to allow reproducible dependencies and check-files option to check if the node_modules cache is valid.
     - yarn install --frozen-lockfile --check-files --non-interactive
-  only:
-    - main
-
-gatsby:build:
-  stage: 🚀 Website Deploy
-  needs: 
-    - yarn:install
-  script:
     - ./node_modules/.bin/gatsby build --prefix-paths
     - find public/ -type f -print0 | xargs -0 sed -i 's/async=""/defer/g'
   artifacts:
