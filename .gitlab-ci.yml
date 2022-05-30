@@ -9,14 +9,16 @@ cache:
   paths:
     # Default cache directory from https://classic.yarnpkg.com/en/docs/install-ci/#gitlab.
     - node_modules/
+    - .yarn/
     # Enables git-lab CI caching. Both .cache and public must be cached, otherwise builds will fail.
     - .cache/
+    - public/
     
-yarn:deploy:
+pages:
   stage: 🚀 Website Deploy
   script:
     # Install via yarn with frozen-lockfile to allow reproducible dependencies and check-files option to check if the node_modules cache is valid.
-    - yarn install --frozen-lockfile --check-files --non-interactive
+    - yarn install --frozen-lockfile --check-files --non-interactive --cache-folder .yarn
     - ./node_modules/.bin/gatsby build --prefix-paths
     - find public/ -type f -print0 | xargs -0 sed -i 's/async=""/defer/g'
   artifacts:
